@@ -1,0 +1,1165 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Le Guide du Cafe</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --bg: #0c0a09;
+      --surface: #1c1917;
+      --surface2: #292524;
+      --border: #44403c;
+      --cream: #fef3c7;
+      --brown: #d97706;
+      --brown-light: #f59e0b;
+      --text: #fafaf9;
+      --text-muted: #a8a29e;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    /* Hero */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 40px 20px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(ellipse at center, rgba(217,119,6,0.08) 0%, transparent 60%);
+      animation: pulse 8s ease-in-out infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); opacity: 0.5; }
+      50% { transform: scale(1.1); opacity: 1; }
+    }
+
+    .hero-icon {
+      font-size: 80px;
+      margin-bottom: 24px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(48px, 8vw, 96px);
+      font-weight: 700;
+      letter-spacing: -2px;
+      line-height: 1.1;
+      position: relative;
+      z-index: 1;
+      background: linear-gradient(135deg, var(--cream), var(--brown-light));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .hero p {
+      font-size: 18px;
+      color: var(--text-muted);
+      margin-top: 16px;
+      max-width: 500px;
+      position: relative;
+      z-index: 1;
+      font-weight: 300;
+    }
+
+    .scroll-hint {
+      position: absolute;
+      bottom: 40px;
+      z-index: 1;
+      animation: bounce 2s infinite;
+      color: var(--text-muted);
+      font-size: 14px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .scroll-hint span {
+      display: block;
+      width: 2px;
+      height: 24px;
+      background: var(--brown);
+      border-radius: 2px;
+      animation: scrollLine 2s infinite;
+    }
+
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(8px); }
+    }
+
+    @keyframes scrollLine {
+      0% { opacity: 0; transform: scaleY(0); transform-origin: top; }
+      50% { opacity: 1; transform: scaleY(1); }
+      100% { opacity: 0; transform: scaleY(0); transform-origin: bottom; }
+    }
+
+    /* Nav filter */
+    .filter-bar {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(12,10,9,0.85);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border);
+      padding: 16px 20px;
+      display: flex;
+      gap: 8px;
+      overflow-x: auto;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .filter-btn {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      color: var(--text-muted);
+      padding: 8px 20px;
+      border-radius: 100px;
+      font-size: 14px;
+      font-family: 'Inter', sans-serif;
+      cursor: pointer;
+      transition: all 0.3s;
+      white-space: nowrap;
+      font-weight: 500;
+    }
+
+    .filter-btn:hover { border-color: var(--brown); color: var(--text); }
+    .filter-btn.active {
+      background: var(--brown);
+      border-color: var(--brown);
+      color: #000;
+    }
+
+    /* Grid */
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 60px 20px 100px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+      gap: 24px;
+    }
+
+    /* Card */
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      overflow: hidden;
+      transition: transform 0.3s, border-color 0.3s, box-shadow 0.3s;
+      cursor: pointer;
+    }
+
+    .card:hover {
+      transform: translateY(-4px);
+      border-color: var(--brown);
+      box-shadow: 0 20px 60px rgba(217,119,6,0.1);
+    }
+
+    .card-visual {
+      height: 200px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .card-visual .cup-icon {
+      font-size: 80px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .card-visual .bg-gradient {
+      position: absolute;
+      inset: 0;
+      opacity: 0.3;
+    }
+
+    .card-body {
+      padding: 24px;
+    }
+
+    .card-category {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      color: var(--brown-light);
+      margin-bottom: 8px;
+    }
+
+    .card-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 24px;
+      font-weight: 600;
+      margin-bottom: 8px;
+      color: var(--text);
+    }
+
+    .card-origin {
+      font-size: 13px;
+      color: var(--text-muted);
+      margin-bottom: 12px;
+    }
+
+    .card-desc {
+      font-size: 14px;
+      color: var(--text-muted);
+      line-height: 1.6;
+      margin-bottom: 16px;
+    }
+
+    .card-tags {
+      display: flex;
+      gap: 6px;
+      flex-wrap: wrap;
+      margin-bottom: 16px;
+    }
+
+    .tag {
+      background: var(--surface2);
+      color: var(--text-muted);
+      padding: 4px 12px;
+      border-radius: 100px;
+      font-size: 12px;
+    }
+
+    .expand-btn {
+      background: none;
+      border: 1px solid var(--border);
+      color: var(--brown-light);
+      padding: 10px 20px;
+      border-radius: 12px;
+      font-size: 13px;
+      font-family: 'Inter', sans-serif;
+      cursor: pointer;
+      width: 100%;
+      transition: all 0.3s;
+      font-weight: 500;
+    }
+
+    .expand-btn:hover {
+      background: var(--brown);
+      border-color: var(--brown);
+      color: #000;
+    }
+
+    /* Modal */
+    .modal-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.8);
+      backdrop-filter: blur(10px);
+      z-index: 1000;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+
+    .modal-overlay.active {
+      display: flex;
+      opacity: 1;
+    }
+
+    .modal {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      max-width: 640px;
+      width: 100%;
+      max-height: 85vh;
+      overflow-y: auto;
+      padding: 40px;
+      position: relative;
+      transform: translateY(20px);
+      transition: transform 0.3s;
+    }
+
+    .modal-overlay.active .modal {
+      transform: translateY(0);
+    }
+
+    .modal-close {
+      position: absolute;
+      top: 16px;
+      right: 16px;
+      background: var(--surface2);
+      border: none;
+      color: var(--text-muted);
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      font-size: 18px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.2s;
+    }
+
+    .modal-close:hover { background: var(--border); color: var(--text); }
+
+    .modal-icon { font-size: 64px; margin-bottom: 20px; }
+
+    .modal-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 32px;
+      margin-bottom: 4px;
+    }
+
+    .modal-subtitle {
+      color: var(--brown-light);
+      font-size: 14px;
+      font-weight: 500;
+      margin-bottom: 20px;
+    }
+
+    .modal-section {
+      margin-top: 28px;
+    }
+
+    .modal-section h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 18px;
+      color: var(--cream);
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .modal-section p {
+      color: var(--text-muted);
+      font-size: 14px;
+      line-height: 1.8;
+    }
+
+    .ingredients-list {
+      list-style: none;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+    }
+
+    .ingredients-list li {
+      background: var(--surface2);
+      padding: 10px 14px;
+      border-radius: 10px;
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+
+    .steps-list {
+      list-style: none;
+      counter-reset: steps;
+    }
+
+    .steps-list li {
+      counter-increment: steps;
+      padding: 14px 0;
+      border-bottom: 1px solid var(--surface2);
+      font-size: 14px;
+      color: var(--text-muted);
+      display: flex;
+      gap: 14px;
+      align-items: flex-start;
+      line-height: 1.6;
+    }
+
+    .steps-list li:last-child { border-bottom: none; }
+
+    .steps-list li::before {
+      content: counter(steps);
+      background: var(--brown);
+      color: #000;
+      min-width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 600;
+      font-size: 13px;
+      margin-top: 1px;
+    }
+
+    .info-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      margin-top: 16px;
+    }
+
+    .info-box {
+      background: var(--surface2);
+      padding: 14px;
+      border-radius: 12px;
+      text-align: center;
+    }
+
+    .info-box .label {
+      font-size: 11px;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 4px;
+    }
+
+    .info-box .value {
+      font-size: 16px;
+      font-weight: 600;
+      color: var(--cream);
+    }
+
+    .modal::-webkit-scrollbar { width: 6px; }
+    .modal::-webkit-scrollbar-track { background: transparent; }
+    .modal::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      padding: 40px 20px;
+      color: var(--text-muted);
+      font-size: 13px;
+      border-top: 1px solid var(--surface2);
+    }
+
+    @media (max-width: 600px) {
+      .grid { grid-template-columns: 1fr; }
+      .modal { padding: 24px; border-radius: 20px; }
+      .ingredients-list { grid-template-columns: 1fr; }
+      .info-grid { grid-template-columns: 1fr; }
+      .hero h1 { letter-spacing: -1px; }
+    }
+  </style>
+</head>
+<body>
+
+<section class="hero">
+  <div class="hero-icon">&#9749;</div>
+  <h1>Le Guide du Cafe</h1>
+  <p>Decouvrez les differents types de cafes du monde entier et apprenez a les preparer chez vous.</p>
+  <div class="scroll-hint">
+    Decouvrir
+    <span></span>
+  </div>
+</section>
+
+<nav class="filter-bar" id="filterBar">
+  <button class="filter-btn active" data-filter="all">Tous</button>
+  <button class="filter-btn" data-filter="espresso">Espresso</button>
+  <button class="filter-btn" data-filter="lait">A base de lait</button>
+  <button class="filter-btn" data-filter="filtre">Filtre & Infusion</button>
+  <button class="filter-btn" data-filter="froid">Cafe froid</button>
+  <button class="filter-btn" data-filter="monde">Du monde</button>
+</nav>
+
+<div class="container">
+  <div class="grid" id="coffeeGrid"></div>
+</div>
+
+<div class="modal-overlay" id="modalOverlay">
+  <div class="modal" id="modal"></div>
+</div>
+
+<footer>Fait avec passion pour les amateurs de cafe</footer>
+
+<script>
+const coffees = [
+  {
+    id: 1,
+    name: "Espresso",
+    category: "espresso",
+    origin: "Italie",
+    icon: "\u2615",
+    gradient: "linear-gradient(135deg, #78350f, #451a03)",
+    desc: "La base de tout. Un shot concentre et intense, avec une belle crema doree en surface.",
+    tags: ["Intense", "Court", "Classique"],
+    caffeine: "63 mg",
+    temp: "90-96\u00b0C",
+    time: "25-30s",
+    ingredients: ["7g de cafe finement moulu", "30ml d'eau chaude", "Machine espresso"],
+    steps: [
+      "Moulez finement votre cafe (texture de sucre en poudre).",
+      "Tassez uniformement dans le porte-filtre avec environ 15kg de pression.",
+      "Verrouillez le porte-filtre et lancez l'extraction.",
+      "L'espresso doit couler comme un filet de miel pendant 25-30 secondes.",
+      "Vous devez obtenir environ 30ml avec une crema epaisse et noisette."
+    ]
+  },
+  {
+    id: 2,
+    name: "Ristretto",
+    category: "espresso",
+    origin: "Italie",
+    icon: "\u2615",
+    gradient: "linear-gradient(135deg, #92400e, #78350f)",
+    desc: "Version encore plus concentree de l'espresso, avec moins d'eau pour un gout plus rond et moins amer.",
+    tags: ["Tres intense", "Tres court", "Doux"],
+    caffeine: "45 mg",
+    temp: "90-96\u00b0C",
+    time: "15-20s",
+    ingredients: ["7g de cafe finement moulu", "15-20ml d'eau", "Machine espresso"],
+    steps: [
+      "Preparez le porte-filtre comme pour un espresso classique.",
+      "Tassez le cafe de la meme maniere.",
+      "Lancez l'extraction mais arretez-la plus tot, a 15-20 secondes.",
+      "Vous devez obtenir 15 a 20ml maximum.",
+      "Le resultat est plus sirupeux, plus doux et plus aromatique qu'un espresso."
+    ]
+  },
+  {
+    id: 3,
+    name: "Lungo",
+    category: "espresso",
+    origin: "Italie",
+    icon: "\u2615",
+    gradient: "linear-gradient(135deg, #a16207, #713f12)",
+    desc: "Un espresso allonge avec plus d'eau, offrant un cafe plus leger mais avec plus d'amertume.",
+    tags: ["Leger", "Allonge", "Amer"],
+    caffeine: "80 mg",
+    temp: "90-96\u00b0C",
+    time: "45-60s",
+    ingredients: ["7g de cafe finement moulu", "60-80ml d'eau", "Machine espresso"],
+    steps: [
+      "Preparez le porte-filtre comme pour un espresso.",
+      "Lancez l'extraction et laissez couler plus longtemps.",
+      "L'extraction dure 45 a 60 secondes au lieu de 25-30.",
+      "Le volume final doit etre d'environ 60 a 80ml.",
+      "La crema sera plus claire et le gout plus allonge."
+    ]
+  },
+  {
+    id: 4,
+    name: "Americano",
+    category: "espresso",
+    origin: "Etats-Unis / Italie",
+    icon: "\u2615",
+    gradient: "linear-gradient(135deg, #b45309, #92400e)",
+    desc: "Un espresso allonge avec de l'eau chaude. Ne pendant la Seconde Guerre mondiale quand les soldats americains trouvaient l'espresso trop fort.",
+    tags: ["Doux", "Long", "Populaire"],
+    caffeine: "63 mg",
+    temp: "85-90\u00b0C",
+    time: "3 min",
+    ingredients: ["1 espresso (30ml)", "120-180ml d'eau chaude", "Machine espresso"],
+    steps: [
+      "Preparez un espresso classique dans une grande tasse.",
+      "Faites chauffer de l'eau entre 85 et 90\u00b0C.",
+      "Versez delicatement l'eau chaude sur l'espresso.",
+      "Le ratio ideal est 1 part espresso pour 4 a 6 parts d'eau.",
+      "Pour preserver la crema, versez l'eau sur le cote de la tasse."
+    ]
+  },
+  {
+    id: 5,
+    name: "Cappuccino",
+    category: "lait",
+    origin: "Italie",
+    icon: "\u2615",
+    gradient: "linear-gradient(135deg, #d97706, #b45309)",
+    desc: "L'equilibre parfait entre espresso, lait chaud et mousse de lait. Traditionnellement consomme le matin en Italie.",
+    tags: ["Cremeux", "Mousseux", "Classique"],
+    caffeine: "63 mg",
+    temp: "65-70\u00b0C",
+    time: "5 min",
+    ingredients: ["1 espresso (30ml)", "120ml de lait entier", "Buse vapeur"],
+    steps: [
+      "Preparez un espresso dans une tasse de 180ml.",
+      "Versez le lait froid dans un pichet en metal.",
+      "Faites mousser le lait avec la buse vapeur en creant un tourbillon.",
+      "Le lait doit atteindre 65-70\u00b0C avec une mousse dense et veloutee.",
+      "Versez le lait sur l'espresso en 3 couches egales : espresso, lait, mousse.",
+      "Saupoudrez de cacao si desire."
+    ]
+  },
+  {
+    id: 6,
+    name: "Latte",
+    category: "lait",
+    origin: "Italie / Etats-Unis",
+    icon: "\u2615",
+    gradient: "linear-gradient(135deg, #f59e0b, #d97706)",
+    desc: "Plus de lait que le cappuccino, avec une fine couche de mousse. La toile parfaite pour le latte art.",
+    tags: ["Doux", "Cremeux", "Grand"],
+    caffeine: "63 mg",
+    temp: "65-70\u00b0C",
+    time: "5 min",
+    ingredients: ["1 espresso (30ml)", "200-250ml de lait entier", "Buse vapeur"],
+    steps: [
+      "Preparez un espresso dans un grand verre ou une tasse de 300ml.",
+      "Faites chauffer le lait a la vapeur jusqu'a 65-70\u00b0C.",
+      "Creez une micro-mousse fine (moins epaisse que pour le cappuccino).",
+      "Tapotez le pichet sur le comptoir pour eliminer les grosses bulles.",
+      "Versez le lait doucement au centre de l'espresso.",
+      "Pour le latte art, inclinez la tasse et versez regulierement en remontant."
+    ]
+  },
+  {
+    id: 7,
+    name: "Flat White",
+    category: "lait",
+    origin: "Australie / Nouvelle-Zelande",
+    icon: "\u2615",
+    gradient: "linear-gradient(135deg, #fbbf24, #f59e0b)",
+    desc: "Un latte plus court et plus intense, avec une micro-mousse ultra veloutee. Le cafe signature de l'Oceanie.",
+    tags: ["Veloute", "Intense", "Tendance"],
+    caffeine: "126 mg",
+    temp: "65-70\u00b0C",
+    time: "5 min",
+    ingredients: ["2 espressos ou 1 double ristretto", "150ml de lait entier", "Buse vapeur"],
+    steps: [
+      "Preparez un double espresso ou un double ristretto.",
+      "Faites mousser le lait en creant une micro-mousse tres fine.",
+      "La mousse doit etre comme de la peinture brillante, sans bulles visibles.",
+      "Versez le lait dans la tasse en un seul mouvement fluide.",
+      "Le resultat final doit avoir moins d'1cm de mousse en surface."
+    ]
+  },
+  {
+    id: 8,
+    name: "Macchiato",
+    category: "lait",
+    origin: "Italie",
+    icon: "\u2615",
+    gradient: "linear-gradient(135deg, #ca8a04, #a16207)",
+    desc: "Un espresso 'tache' d'une petite quantite de mousse de lait. Parfait pour adoucir legerement l'espresso.",
+    tags: ["Intense", "Court", "Tache de lait"],
+    caffeine: "63 mg",
+    temp: "65\u00b0C",
+    time: "3 min",
+    ingredients: ["1 espresso (30ml)", "1-2 cuilleres de mousse de lait"],
+    steps: [
+      "Preparez un espresso classique dans une petite tasse.",
+      "Faites mousser une petite quantite de lait.",
+      "Deposez une cuillere de mousse au centre de l'espresso.",
+      "La mousse doit juste 'tacher' le cafe, pas le noyer.",
+      "Servez immediatement."
+    ]
+  },
+  {
+    id: 9,
+    name: "Cortado",
+    category: "lait",
+    origin: "Espagne",
+    icon: "\u2615",
+    gradient: "linear-gradient(135deg, #ea580c, #c2410c)",
+    desc: "Un espresso 'coupe' avec une quantite egale de lait chaud. L'equilibre parfait entre force et douceur.",
+    tags: ["Equilibre", "Court", "Espagnol"],
+    caffeine: "63 mg",
+    temp: "65-70\u00b0C",
+    time: "3 min",
+    ingredients: ["1 espresso (30ml)", "30ml de lait chaud", "Buse vapeur"],
+    steps: [
+      "Preparez un espresso dans un petit verre.",
+      "Chauffez le lait a la vapeur sans creer trop de mousse.",
+      "Versez le lait chaud directement sur l'espresso.",
+      "Le ratio est 1:1 - autant de lait que d'espresso.",
+      "Servez dans un petit verre transparent pour voir les couches."
+    ]
+  },
+  {
+    id: 10,
+    name: "Latte Macchiato",
+    category: "lait",
+    origin: "Italie",
+    icon: "\u2615",
+    gradient: "linear-gradient(135deg, #eab308, #ca8a04)",
+    desc: "L'inverse du macchiato : du lait 'tache' de cafe. Servi en verre pour voir les belles couches distinctes.",
+    tags: ["En couches", "Doux", "Visuel"],
+    caffeine: "63 mg",
+    temp: "65-70\u00b0C",
+    time: "5 min",
+    ingredients: ["1 espresso (30ml)", "200ml de lait entier", "Buse vapeur", "Grand verre transparent"],
+    steps: [
+      "Faites mousser le lait pour creer une belle mousse epaisse.",
+      "Versez le lait mousse dans un grand verre transparent.",
+      "Attendez 30 secondes que les couches se separent.",
+      "Preparez un espresso.",
+      "Versez lentement l'espresso au centre du lait a travers la mousse.",
+      "Trois couches doivent apparaitre : lait, cafe, mousse."
+    ]
+  },
+  {
+    id: 11,
+    name: "Mocha",
+    category: "lait",
+    origin: "Etats-Unis",
+    icon: "\u2615",
+    gradient: "linear-gradient(135deg, #7c2d12, #451a03)",
+    desc: "La rencontre gourmande du cafe et du chocolat, couronnee de creme fouettee. Un dessert dans une tasse.",
+    tags: ["Chocolat", "Gourmand", "Sucre"],
+    caffeine: "63 mg",
+    temp: "65-70\u00b0C",
+    time: "6 min",
+    ingredients: ["1 espresso (30ml)", "150ml de lait", "2 cuilleres de cacao ou sirop chocolat", "Creme fouettee"],
+    steps: [
+      "Melangez le cacao en poudre ou le sirop chocolat au fond de la tasse.",
+      "Preparez un espresso et versez-le sur le chocolat.",
+      "Melangez bien pour dissoudre le chocolat.",
+      "Faites chauffer et mousser le lait.",
+      "Versez le lait sur le melange cafe-chocolat.",
+      "Ajoutez une genereuse dose de creme fouettee et saupoudrez de cacao."
+    ]
+  },
+  {
+    id: 12,
+    name: "Cafe Filtre (V60)",
+    category: "filtre",
+    origin: "Japon",
+    icon: "\u2615",
+    gradient: "linear-gradient(135deg, #065f46, #064e3b)",
+    desc: "La methode V60 offre un cafe clair et aromatique qui met en valeur les notes subtiles du grain.",
+    tags: ["Delicat", "Aromatique", "Methode douce"],
+    caffeine: "95 mg",
+    temp: "92-96\u00b0C",
+    time: "3-4 min",
+    ingredients: ["15g de cafe moulu moyen", "250ml d'eau a 93\u00b0C", "Dripper V60", "Filtre papier"],
+    steps: [
+      "Placez le filtre dans le V60 et rincez-le a l'eau chaude (elimine le gout de papier).",
+      "Ajoutez le cafe moulu et creez un petit puits au centre.",
+      "Versez 30ml d'eau et attendez 30-45s (phase de bloom : le cafe degaze).",
+      "Versez le reste de l'eau en spirale du centre vers l'exterieur.",
+      "Versez par etapes en maintenant le niveau d'eau constant.",
+      "L'ecoulement total doit durer entre 3 et 4 minutes.",
+      "Retirez le dripper et degustez."
+    ]
+  },
+  {
+    id: 13,
+    name: "Chemex",
+    category: "filtre",
+    origin: "Etats-Unis",
+    icon: "\u2615",
+    gradient: "linear-gradient(135deg, #0d9488, #0f766e)",
+    desc: "Le Chemex produit un cafe tres propre et limpide grace a son filtre epais. Une oeuvre d'art en verre.",
+    tags: ["Propre", "Limpide", "Design"],
+    caffeine: "95 mg",
+    temp: "92-96\u00b0C",
+    time: "4-5 min",
+    ingredients: ["30g de cafe moulu moyen-gros", "500ml d'eau a 93\u00b0C", "Chemex", "Filtre Chemex"],
+    steps: [
+      "Ouvrez le filtre Chemex en placant le cote a 3 couches vers le bec verseur.",
+      "Rincez le filtre a l'eau chaude puis videz l'eau.",
+      "Ajoutez le cafe et versez 60ml d'eau pour le bloom (45 secondes).",
+      "Versez l'eau en cercles concentriques reguliers.",
+      "Maintenez un debit constant et ne versez jamais sur le filtre directement.",
+      "Le temps total d'infusion doit etre de 4 a 5 minutes.",
+      "Retirez le filtre et servez directement depuis le Chemex."
+    ]
+  },
+  {
+    id: 14,
+    name: "French Press",
+    category: "filtre",
+    origin: "France",
+    icon: "\u2615",
+    gradient: "linear-gradient(135deg, #1e40af, #1e3a8a)",
+    desc: "La cafetiere a piston produit un cafe riche et corpose. Simple, sans filtre papier, avec toutes les huiles du cafe.",
+    tags: ["Corpose", "Riche", "Simple"],
+    caffeine: "100 mg",
+    temp: "92-96\u00b0C",
+    time: "4 min",
+    ingredients: ["30g de cafe grossierement moulu", "500ml d'eau a 93\u00b0C", "Cafetiere a piston"],
+    steps: [
+      "Prechauffez la cafetiere avec de l'eau chaude.",
+      "Ajoutez le cafe grossierement moulu (texture de gros sel).",
+      "Versez toute l'eau d'un coup et demarrez le chrono.",
+      "Remuez doucement apres 1 minute.",
+      "Placez le couvercle sans presser et attendez 4 minutes au total.",
+      "Pressez le piston lentement et regulierement vers le bas.",
+      "Servez immediatement pour eviter la sur-extraction."
+    ]
+  },
+  {
+    id: 15,
+    name: "AeroPress",
+    category: "filtre",
+    origin: "Etats-Unis",
+    icon: "\u2615",
+    gradient: "linear-gradient(135deg, #7c3aed, #6d28d9)",
+    desc: "Methode polyvalente et portable qui produit un cafe doux et concentre. La favorite des voyageurs.",
+    tags: ["Polyvalent", "Portable", "Doux"],
+    caffeine: "80 mg",
+    temp: "80-90\u00b0C",
+    time: "2 min",
+    ingredients: ["15g de cafe moulu fin-moyen", "200ml d'eau a 85\u00b0C", "AeroPress", "Filtre papier ou metal"],
+    steps: [
+      "Methode inversee : assemblez l'AeroPress a l'envers (piston en bas).",
+      "Ajoutez le cafe et versez l'eau chaude.",
+      "Remuez pendant 10 secondes.",
+      "Placez le filtre rince sur le capuchon et vissez-le.",
+      "Attendez 1 minute au total puis retournez sur votre tasse.",
+      "Pressez lentement pendant 20-30 secondes.",
+      "Ajoutez de l'eau chaude si vous voulez un cafe plus allonge."
+    ]
+  },
+  {
+    id: 16,
+    name: "Moka (Cafetiere italienne)",
+    category: "filtre",
+    origin: "Italie",
+    icon: "\u2615",
+    gradient: "linear-gradient(135deg, #dc2626, #b91c1c)",
+    desc: "La mythique cafetiere Bialetti. Un cafe fort et aromatique, symbole de la culture italienne a la maison.",
+    tags: ["Fort", "Traditionnel", "Aromatique"],
+    caffeine: "105 mg",
+    temp: "100\u00b0C",
+    time: "5 min",
+    ingredients: ["15-20g de cafe moulu moyen-fin", "Eau chaude", "Cafetiere Moka (Bialetti)"],
+    steps: [
+      "Remplissez la base avec de l'eau chaude jusqu'a la soupape de securite.",
+      "Ajoutez le cafe dans le filtre sans tasser.",
+      "Assemblez la cafetiere et placez-la sur feu moyen.",
+      "Gardez le couvercle ouvert pour surveiller l'extraction.",
+      "Quand le cafe commence a sortir en faisant un sifflement, baissez le feu.",
+      "Retirez du feu quand le reservoir du haut est a moitie plein.",
+      "Refroidissez la base sous l'eau froide pour stopper l'extraction."
+    ]
+  },
+  {
+    id: 17,
+    name: "Cold Brew",
+    category: "froid",
+    origin: "Japon / Etats-Unis",
+    icon: "\ud83e\uddca",
+    gradient: "linear-gradient(135deg, #0e7490, #155e75)",
+    desc: "Infusion a froid pendant 12 a 24h. Le resultat est un cafe doux, peu acide et naturellement sucre.",
+    tags: ["Froid", "Doux", "Peu acide"],
+    caffeine: "200 mg",
+    temp: "Eau froide",
+    time: "12-24h",
+    ingredients: ["100g de cafe grossierement moulu", "1L d'eau froide filtree", "Bocal ou carafe", "Filtre"],
+    steps: [
+      "Moulez le cafe tres grossierement.",
+      "Melangez le cafe et l'eau froide dans un grand bocal.",
+      "Remuez pour bien mouiller tout le cafe.",
+      "Couvrez et placez au refrigerateur.",
+      "Laissez infuser 12 a 24h (plus long = plus fort).",
+      "Filtrez a travers un filtre en tissu ou papier.",
+      "Le concentre se conserve 2 semaines au frigo. Diluez avec de l'eau ou du lait."
+    ]
+  },
+  {
+    id: 18,
+    name: "Iced Latte",
+    category: "froid",
+    origin: "Etats-Unis",
+    icon: "\ud83e\uddca",
+    gradient: "linear-gradient(135deg, #0284c7, #0369a1)",
+    desc: "Un espresso verse sur du lait froid et des glacons. Rafraichissant et cremeux, parfait pour l'ete.",
+    tags: ["Glace", "Cremeux", "Ete"],
+    caffeine: "63 mg",
+    temp: "Froid",
+    time: "3 min",
+    ingredients: ["1 double espresso", "200ml de lait froid", "Glacons", "Grand verre"],
+    steps: [
+      "Remplissez un grand verre de glacons.",
+      "Versez le lait froid sur les glacons.",
+      "Preparez un double espresso.",
+      "Versez lentement l'espresso sur le lait glace.",
+      "L'espresso va creer de belles couches. Melangez avant de boire.",
+      "Ajoutez du sirop (vanille, caramel) selon vos gouts."
+    ]
+  },
+  {
+    id: 19,
+    name: "Affogato",
+    category: "froid",
+    origin: "Italie",
+    icon: "\ud83c\udf68",
+    gradient: "linear-gradient(135deg, #e11d48, #be123c)",
+    desc: "Un espresso brulant verse sur une boule de glace vanille. Dessert et cafe en un. La dolce vita.",
+    tags: ["Dessert", "Glace", "Gourmand"],
+    caffeine: "63 mg",
+    temp: "Chaud + froid",
+    time: "2 min",
+    ingredients: ["1 espresso bien chaud", "1-2 boules de glace vanille", "Petit verre ou bol"],
+    steps: [
+      "Placez une ou deux boules de glace vanille dans un petit verre.",
+      "Preparez un espresso bien serre et bien chaud.",
+      "Versez immediatement l'espresso sur la glace.",
+      "Degustez immediatement avec une cuillere.",
+      "Variante : ajoutez un trait d'amaretto ou de Baileys pour les adultes."
+    ]
+  },
+  {
+    id: 20,
+    name: "Espresso Tonic",
+    category: "froid",
+    origin: "Scandinavie",
+    icon: "\ud83e\uddca",
+    gradient: "linear-gradient(135deg, #06b6d4, #0891b2)",
+    desc: "La rencontre surprenante de l'espresso et du tonic. Petillant, amer et rafraichissant. La tendance des baristas.",
+    tags: ["Petillant", "Tendance", "Amer"],
+    caffeine: "63 mg",
+    temp: "Froid",
+    time: "3 min",
+    ingredients: ["1 double espresso", "150ml de tonic (Schweppes, Fever-Tree)", "Glacons", "Tranche de citron"],
+    steps: [
+      "Remplissez un grand verre de glacons.",
+      "Versez le tonic bien frais sur les glacons.",
+      "Preparez un double espresso et laissez-le refroidir 1 minute.",
+      "Versez delicatement l'espresso sur le tonic en utilisant le dos d'une cuillere.",
+      "Les couches vont se former naturellement.",
+      "Ajoutez une tranche de citron ou d'orange.",
+      "Melangez legerement avant de deguster."
+    ]
+  },
+  {
+    id: 21,
+    name: "Cafe Turc",
+    category: "monde",
+    origin: "Turquie",
+    icon: "\u2615",
+    gradient: "linear-gradient(135deg, #b91c1c, #991b1b)",
+    desc: "Prepare dans un cezve avec du cafe ultra fin. Epais, aromatique, souvent parfume a la cardamome.",
+    tags: ["Traditionnel", "Epais", "Epice"],
+    caffeine: "50 mg",
+    temp: "70\u00b0C (avant ebullition)",
+    time: "5 min",
+    ingredients: ["7g de cafe moulu ultra fin", "60ml d'eau froide", "Sucre (optionnel)", "Cezve (ibrik)", "Cardamome (optionnel)"],
+    steps: [
+      "Versez l'eau froide dans le cezve.",
+      "Ajoutez le cafe et le sucre selon vos gouts (ne remuez pas encore).",
+      "Placez sur feu doux.",
+      "Quand le cafe commence a mousser et monter, retirez du feu.",
+      "Versez un peu de mousse dans la tasse.",
+      "Remettez sur le feu et laissez monter une 2eme fois.",
+      "Versez lentement dans la tasse. Attendez 1 min que le marc se depose.",
+      "Ne buvez pas le fond de la tasse (marc)."
+    ]
+  },
+  {
+    id: 22,
+    name: "Cafe Vietnamien",
+    category: "monde",
+    origin: "Vietnam",
+    icon: "\u2615",
+    gradient: "linear-gradient(135deg, #15803d, #166534)",
+    desc: "Prepare avec un filtre phin, servi avec du lait concentre sucre. Intense et incrediblement doux.",
+    tags: ["Sucre", "Intense", "Lait concentre"],
+    caffeine: "100 mg",
+    temp: "96\u00b0C",
+    time: "5-7 min",
+    ingredients: ["15g de cafe moulu grossier (robusta)", "Lait concentre sucre", "Filtre phin vietnamien", "Eau bouillante"],
+    steps: [
+      "Ajoutez 2-3 cuilleres de lait concentre sucre au fond du verre.",
+      "Placez le filtre phin sur le verre.",
+      "Ajoutez le cafe dans le filtre et tassez legerement.",
+      "Versez un peu d'eau chaude et attendez 20 secondes (pre-infusion).",
+      "Remplissez le filtre d'eau chaude et couvrez.",
+      "Laissez le cafe s'egoutter lentement pendant 5 a 7 minutes.",
+      "Retirez le filtre et melangez le cafe avec le lait concentre.",
+      "Version glacee : ajoutez des glacons apres avoir melange."
+    ]
+  },
+  {
+    id: 23,
+    name: "Cafe Grec (Frappe)",
+    category: "monde",
+    origin: "Grece",
+    icon: "\ud83e\uddca",
+    gradient: "linear-gradient(135deg, #2563eb, #1d4ed8)",
+    desc: "Cafe instantane battu avec de l'eau et du sucre pour creer une mousse epaisse. L'icone de l'ete grec.",
+    tags: ["Mousse", "Glace", "Ete"],
+    caffeine: "60 mg",
+    temp: "Froid",
+    time: "3 min",
+    ingredients: ["2 cuilleres de cafe instantane", "2 cuilleres de sucre", "Eau froide", "Lait (optionnel)", "Glacons"],
+    steps: [
+      "Dans un shaker ou un verre, ajoutez le cafe instantane, le sucre et 2-3 cuilleres d'eau.",
+      "Secouez vigoureusement ou mixez jusqu'a obtenir une mousse epaisse et claire.",
+      "Remplissez un grand verre de glacons.",
+      "Versez la mousse sur les glacons.",
+      "Ajoutez de l'eau froide pour remplir le verre.",
+      "Ajoutez un trait de lait si vous le souhaitez.",
+      "Servez avec une paille et degustez lentement."
+    ]
+  },
+  {
+    id: 24,
+    name: "Irish Coffee",
+    category: "monde",
+    origin: "Irlande",
+    icon: "\u2615",
+    gradient: "linear-gradient(135deg, #854d0e, #713f12)",
+    desc: "Cafe chaud avec du whiskey irlandais et de la creme epaisse. Le cocktail-cafe par excellence.",
+    tags: ["Alcoolise", "Chaud", "Creme"],
+    caffeine: "95 mg",
+    temp: "80\u00b0C",
+    time: "5 min",
+    ingredients: ["150ml de cafe filtre bien chaud", "40ml de whiskey irlandais", "1 cuillere de sucre brun", "Creme liquide epaisse"],
+    steps: [
+      "Prechauffez un verre a Irish Coffee avec de l'eau chaude.",
+      "Ajoutez le sucre brun et le whiskey dans le verre.",
+      "Versez le cafe chaud et remuez pour dissoudre le sucre.",
+      "Fouettez legerement la creme (elle doit etre epaisse mais coulante).",
+      "Versez la creme sur le dos d'une cuillere pour qu'elle flotte sur le cafe.",
+      "Ne melangez pas : buvez le cafe a travers la creme."
+    ]
+  },
+  {
+    id: 25,
+    name: "Cafe au Lait",
+    category: "lait",
+    origin: "France",
+    icon: "\u2615",
+    gradient: "linear-gradient(135deg, #c2410c, #9a3412)",
+    desc: "Le classique francais : cafe filtre melange a parts egales avec du lait chaud. Simple et reconfortant.",
+    tags: ["Francais", "Simple", "Doux"],
+    caffeine: "95 mg",
+    temp: "70\u00b0C",
+    time: "5 min",
+    ingredients: ["150ml de cafe filtre", "150ml de lait chaud", "Grand bol ou tasse"],
+    steps: [
+      "Preparez un cafe filtre assez fort.",
+      "Chauffez le lait dans une casserole sans le faire bouillir.",
+      "Versez simultanement le cafe et le lait dans un grand bol.",
+      "Le ratio traditionnel est 1:1.",
+      "Servez dans un bol comme le veut la tradition francaise.",
+      "Trempez-y un croissant pour l'experience complete."
+    ]
+  }
+];
+
+const categoryNames = {
+  espresso: "Espresso",
+  lait: "A base de lait",
+  filtre: "Filtre & Infusion",
+  froid: "Cafe froid",
+  monde: "Du monde"
+};
+
+let activeFilter = 'all';
+
+function renderGrid() {
+  const grid = document.getElementById('coffeeGrid');
+  const filtered = activeFilter === 'all' ? coffees : coffees.filter(c => c.category === activeFilter);
+
+  grid.innerHTML = filtered.map(coffee => `
+    <div class="card" onclick="openModal(${coffee.id})">
+      <div class="card-visual">
+        <div class="bg-gradient" style="background: ${coffee.gradient}"></div>
+        <div class="cup-icon">${coffee.icon}</div>
+      </div>
+      <div class="card-body">
+        <div class="card-category">${categoryNames[coffee.category]}</div>
+        <div class="card-title">${coffee.name}</div>
+        <div class="card-origin">${coffee.origin}</div>
+        <div class="card-desc">${coffee.desc}</div>
+        <div class="card-tags">${coffee.tags.map(t => `<span class="tag">${t}</span>`).join('')}</div>
+        <button class="expand-btn">Voir la preparation</button>
+      </div>
+    </div>
+  `).join('');
+}
+
+function openModal(id) {
+  const c = coffees.find(x => x.id === id);
+  if (!c) return;
+
+  const modal = document.getElementById('modal');
+  modal.innerHTML = `
+    <button class="modal-close" onclick="closeModal()">&times;</button>
+    <div class="modal-icon">${c.icon}</div>
+    <div class="modal-title">${c.name}</div>
+    <div class="modal-subtitle">${c.origin} &middot; ${categoryNames[c.category]}</div>
+    <p style="color: var(--text-muted); font-size: 14px; line-height: 1.7;">${c.desc}</p>
+
+    <div class="info-grid">
+      <div class="info-box">
+        <div class="label">Cafeine</div>
+        <div class="value">${c.caffeine}</div>
+      </div>
+      <div class="info-box">
+        <div class="label">Temperature</div>
+        <div class="value">${c.temp}</div>
+      </div>
+      <div class="info-box">
+        <div class="label">Temps</div>
+        <div class="value">${c.time}</div>
+      </div>
+    </div>
+
+    <div class="modal-section">
+      <h3>Ingredients</h3>
+      <ul class="ingredients-list">
+        ${c.ingredients.map(i => `<li>${i}</li>`).join('')}
+      </ul>
+    </div>
+
+    <div class="modal-section">
+      <h3>Preparation</h3>
+      <ol class="steps-list">
+        ${c.steps.map(s => `<li>${s}</li>`).join('')}
+      </ol>
+    </div>
+  `;
+
+  document.getElementById('modalOverlay').classList.add('active');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeModal() {
+  document.getElementById('modalOverlay').classList.remove('active');
+  document.body.style.overflow = '';
+}
+
+document.getElementById('modalOverlay').addEventListener('click', e => {
+  if (e.target === e.currentTarget) closeModal();
+});
+
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape') closeModal();
+});
+
+document.querySelectorAll('.filter-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    activeFilter = btn.dataset.filter;
+    renderGrid();
+  });
+});
+
+renderGrid();
+</script>
+
+</body>
+</html>
