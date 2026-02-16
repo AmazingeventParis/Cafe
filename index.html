@@ -10,81 +10,100 @@
 :root{--bg:#0c0a09;--surface:#1c1917;--surface2:#292524;--surface3:#3a3530;--border:#44403c;--cream:#fef3c7;--brown:#d97706;--brown-light:#f59e0b;--brown-dark:#92400e;--text:#fafaf9;--text-muted:#a8a29e;--green:#22c55e;--red:#ef4444;--blue:#3b82f6;--purple:#a855f7;--nav-w:72px}
 body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);line-height:1.6}
 a{color:var(--brown-light);text-decoration:none}
-a:hover{text-decoration:underline}
 
 /* NAV */
 nav{position:fixed;top:0;left:0;width:var(--nav-w);height:100vh;background:var(--surface);border-right:1px solid var(--border);display:flex;flex-direction:column;align-items:center;padding:16px 0;gap:4px;z-index:500;overflow-y:auto}
 nav .logo{font-size:28px;margin-bottom:12px;padding-bottom:12px;border-bottom:1px solid var(--border);width:100%;text-align:center}
-nav a.nav-link{width:48px;height:48px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:20px;color:var(--text-muted);transition:all .2s;text-decoration:none;position:relative}
-nav a.nav-link:hover{background:var(--surface2);color:var(--text)}
-nav a.nav-link.active{background:var(--brown);color:#000}
-nav a.nav-link .tip{position:absolute;left:60px;background:var(--surface2);color:var(--text);padding:6px 12px;border-radius:8px;font-size:12px;white-space:nowrap;opacity:0;pointer-events:none;transition:opacity .2s;z-index:600}
-nav a.nav-link:hover .tip{opacity:1}
+nav a.nl{width:48px;height:48px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:20px;color:var(--text-muted);transition:all .2s;text-decoration:none;position:relative}
+nav a.nl:hover{background:var(--surface2);color:var(--text)}
+nav a.nl.active{background:var(--brown);color:#000}
+nav a.nl .tip{position:absolute;left:60px;background:var(--surface2);color:var(--text);padding:6px 12px;border-radius:8px;font-size:12px;white-space:nowrap;opacity:0;pointer-events:none;transition:opacity .2s;z-index:600}
+nav a.nl:hover .tip{opacity:1}
 
-/* MAIN */
 main{margin-left:var(--nav-w);min-height:100vh}
-.section{padding:60px 40px 80px;max-width:1100px;margin:0 auto}
-.section-badge{display:inline-block;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:2px;color:var(--brown-light);margin-bottom:8px}
-.section h2{font-family:'Playfair Display',serif;font-size:clamp(28px,4vw,42px);margin-bottom:8px;color:var(--cream)}
-.section .subtitle{color:var(--text-muted);font-size:15px;margin-bottom:40px;max-width:600px}
+.sec{padding:60px 40px 80px;max-width:1200px;margin:0 auto}
+.badge{display:inline-block;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:2px;color:var(--brown-light);margin-bottom:8px}
+.sec h2{font-family:'Playfair Display',serif;font-size:clamp(28px,4vw,42px);margin-bottom:8px;color:var(--cream)}
+.sec .sub{color:var(--text-muted);font-size:15px;margin-bottom:40px;max-width:600px}
+.sec h3{font-family:'Playfair Display',serif;color:var(--cream);margin:40px 0 20px;font-size:24px}
 
 /* HERO */
 .hero{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:40px 20px;position:relative;overflow:hidden}
 .hero::before{content:'';position:absolute;inset:-50%;background:radial-gradient(ellipse at center,rgba(217,119,6,.08) 0%,transparent 60%);animation:pulse 8s ease-in-out infinite}
 @keyframes pulse{0%,100%{transform:scale(1);opacity:.5}50%{transform:scale(1.1);opacity:1}}
-.hero-icon{font-size:72px;margin-bottom:16px;position:relative;z-index:1}
 .hero h1{font-family:'Playfair Display',serif;font-size:clamp(40px,7vw,80px);font-weight:700;letter-spacing:-2px;line-height:1.1;position:relative;z-index:1;background:linear-gradient(135deg,var(--cream),var(--brown-light));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
 .hero p{font-size:17px;color:var(--text-muted);margin-top:12px;max-width:520px;position:relative;z-index:1;font-weight:300}
-.hero-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:12px;margin-top:40px;width:100%;max-width:800px;position:relative;z-index:1}
-.hero-card{background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:20px 12px;text-align:center;cursor:pointer;transition:all .3s;text-decoration:none;color:var(--text)}
-.hero-card:hover{border-color:var(--brown);transform:translateY(-2px);text-decoration:none}
-.hero-card .hc-icon{font-size:28px;margin-bottom:8px}
-.hero-card .hc-title{font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:1px;color:var(--text-muted)}
+.hgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:12px;margin-top:40px;width:100%;max-width:800px;position:relative;z-index:1}
+.hc{background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:18px 10px;text-align:center;cursor:pointer;transition:all .3s;text-decoration:none;color:var(--text)}
+.hc:hover{border-color:var(--brown);transform:translateY(-2px)}
+.hc span{font-size:28px;display:block;margin-bottom:6px}
+.hc small{font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:1px;color:var(--text-muted)}
 
-/* CARDS */
-.grid-2{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:20px}
-.grid-3{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:16px}
-.card{background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:24px;transition:all .3s}
-.card:hover{border-color:var(--brown);transform:translateY(-2px)}
-.card h3{font-family:'Playfair Display',serif;font-size:20px;margin-bottom:8px;color:var(--text)}
-.card p{font-size:14px;color:var(--text-muted);line-height:1.7}
-.card-icon{font-size:36px;margin-bottom:12px}
-.card-label{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:1.5px;color:var(--brown-light);margin-bottom:6px}
+/* VISUAL CARDS */
+.vgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:20px}
+.vcard{background:var(--surface);border:1px solid var(--border);border-radius:20px;overflow:hidden;transition:all .3s}
+.vcard:hover{border-color:var(--brown);transform:translateY(-2px)}
+.vcard-vis{padding:32px;display:flex;align-items:center;justify-content:center;min-height:200px;position:relative}
+.vcard-body{padding:20px 24px 24px}
+.vcard-body h4{font-family:'Playfair Display',serif;font-size:18px;margin-bottom:6px}
+.vcard-body p{font-size:13px;color:var(--text-muted);line-height:1.6}
+.vcard-status{display:inline-block;padding:4px 12px;border-radius:100px;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:1px;margin-bottom:8px}
+.st-good{background:#052e16;color:#4ade80}
+.st-bad{background:#450a0a;color:#f87171}
+.st-warn{background:#451a03;color:#fbbf24}
+.st-info{background:#0c1a3d;color:#60a5fa}
 
-/* SPECTRUM BAR */
-.spectrum{display:flex;height:60px;border-radius:12px;overflow:hidden;margin:20px 0}
-.spectrum-seg{flex:1;display:flex;align-items:flex-end;justify-content:center;padding:8px 4px;font-size:10px;font-weight:600;color:#000;text-align:center;transition:flex .3s}
-.spectrum-seg:hover{flex:2}
+/* COMPARE STRIP */
+.compare{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border-radius:20px;overflow:hidden;border:1px solid var(--border)}
+.compare-item{padding:32px 20px;text-align:center;position:relative}
+.compare-item svg{margin:0 auto 16px;display:block}
+.compare-item h4{font-size:15px;margin-bottom:4px}
+.compare-item p{font-size:12px;color:var(--text-muted)}
+
+/* THERMOMETER */
+.thermo-wrap{display:flex;align-items:stretch;gap:40px;padding:20px;flex-wrap:wrap;justify-content:center}
+.thermo-bar{width:60px;height:300px;background:var(--surface2);border-radius:30px;position:relative;overflow:hidden;border:2px solid var(--border)}
+.thermo-fill{position:absolute;bottom:0;width:100%;border-radius:0 0 28px 28px;transition:height .5s}
+.thermo-zones{flex:1;display:flex;flex-direction:column;justify-content:space-between;min-width:200px;max-width:400px}
+.tz{padding:16px;border-radius:12px;display:flex;align-items:center;gap:12px}
+.tz-icon{font-size:32px}
+
+/* ANIM */
+@keyframes bubble1{0%,100%{transform:translateY(0) scale(1)}50%{transform:translateY(-8px) scale(1.1)}}
+@keyframes bubble2{0%,100%{transform:translateY(0) scale(1)}50%{transform:translateY(-12px) scale(.9)}}
+@keyframes bubble3{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
+@keyframes steam{0%{opacity:0;transform:translateY(0) scaleX(1)}50%{opacity:.6;transform:translateY(-15px) scaleX(1.3)}100%{opacity:0;transform:translateY(-30px) scaleX(.8)}}
+@keyframes pour{0%,100%{transform:rotate(-15deg)}50%{transform:rotate(-25deg)}}
+@keyframes swirl{0%{transform:rotate(0deg)}100%{transform:rotate(360deg)}}
+@keyframes shimmer{0%{opacity:.3}50%{opacity:.7}100%{opacity:.3}}
+.anim-bubble{animation:bubble1 2s ease-in-out infinite}
+.anim-bubble2{animation:bubble2 2.5s ease-in-out infinite .3s}
+.anim-bubble3{animation:bubble3 1.8s ease-in-out infinite .6s}
+.steam-line{animation:steam 2s ease-out infinite}
+.steam-line2{animation:steam 2.5s ease-out infinite .7s}
+.steam-line3{animation:steam 2s ease-out infinite 1.4s}
+
+/* GRIND VISUAL */
+.grind-vis{display:flex;gap:4px;align-items:flex-end;justify-content:center;padding:20px 0}
+.grind-dot{border-radius:50%;background:var(--brown)}
+
+/* DIAG */
+.diag{background:var(--surface);border:1px solid var(--border);border-radius:16px;overflow:hidden;margin-bottom:10px}
+.diag-h{padding:16px 20px;cursor:pointer;display:flex;justify-content:space-between;align-items:center;font-weight:600;font-size:15px;transition:background .2s}
+.diag-h:hover{background:var(--surface2)}
+.diag .arr{transition:transform .3s;color:var(--text-muted)}
+.diag.open .arr{transform:rotate(180deg)}
+.diag-b{max-height:0;overflow:hidden;transition:max-height .4s}
+.diag.open .diag-b{max-height:800px}
+.diag-bi{padding:0 20px 20px;font-size:14px;color:var(--text-muted);line-height:1.8}
+.diag-bi strong{color:var(--cream)}
 
 /* TABLE */
-.ref-table{width:100%;border-collapse:collapse;margin:20px 0}
-.ref-table th{text-align:left;padding:12px 16px;background:var(--surface2);color:var(--cream);font-size:13px;font-weight:600;text-transform:uppercase;letter-spacing:1px}
-.ref-table th:first-child{border-radius:10px 0 0 0}
-.ref-table th:last-child{border-radius:0 10px 0 0}
-.ref-table td{padding:12px 16px;border-bottom:1px solid var(--surface2);font-size:14px;color:var(--text-muted)}
-.ref-table tr:hover td{background:var(--surface);color:var(--text)}
-
-/* DIAG CARDS */
-.diag-card{background:var(--surface);border:1px solid var(--border);border-radius:16px;overflow:hidden;margin-bottom:12px}
-.diag-header{padding:16px 20px;cursor:pointer;display:flex;justify-content:space-between;align-items:center;font-weight:600;font-size:15px;transition:background .2s}
-.diag-header:hover{background:var(--surface2)}
-.diag-header .arrow{transition:transform .3s;color:var(--text-muted)}
-.diag-card.open .arrow{transform:rotate(180deg)}
-.diag-body{max-height:0;overflow:hidden;transition:max-height .4s ease}
-.diag-card.open .diag-body{max-height:600px}
-.diag-body-inner{padding:0 20px 20px;font-size:14px;color:var(--text-muted);line-height:1.8}
-.diag-body-inner strong{color:var(--cream)}
-
-/* TAGS */
-.tag{display:inline-block;background:var(--surface2);color:var(--text-muted);padding:4px 12px;border-radius:100px;font-size:12px;margin:2px}
-.tag-green{background:#052e16;color:#4ade80}
-.tag-red{background:#450a0a;color:#f87171}
-.tag-blue{background:#0c1a3d;color:#60a5fa}
-.tag-amber{background:#451a03;color:#fbbf24}
-
-/* RATIO BAR */
-.ratio-bar{display:flex;height:32px;border-radius:8px;overflow:hidden;margin:12px 0;font-size:11px;font-weight:600}
-.ratio-bar div{display:flex;align-items:center;justify-content:center;color:#000}
+.rtable{width:100%;border-collapse:collapse;margin:20px 0}
+.rtable th{text-align:left;padding:12px 16px;background:var(--surface2);color:var(--cream);font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:1px}
+.rtable th:first-child{border-radius:10px 0 0 0}.rtable th:last-child{border-radius:0 10px 0 0}
+.rtable td{padding:12px 16px;border-bottom:1px solid var(--surface2);font-size:14px;color:var(--text-muted)}
+.rtable tr:hover td{background:var(--surface);color:var(--text)}
 
 /* STEPS */
 .steps{counter-reset:s}
@@ -93,691 +112,859 @@ main{margin-left:var(--nav-w);min-height:100vh}
 .step::before{content:counter(s);background:var(--brown);color:#000;min-width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:14px;flex-shrink:0}
 
 /* VIDEOS */
-.video-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:20px}
-.video-card{background:var(--surface);border:1px solid var(--border);border-radius:16px;overflow:hidden}
-.video-card iframe{width:100%;aspect-ratio:16/9;border:none;display:block}
-.video-card .vc-body{padding:16px}
-.video-card .vc-title{font-weight:600;font-size:15px;margin-bottom:4px}
-.video-card .vc-desc{font-size:13px;color:var(--text-muted)}
+.vid-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:20px}
+.vid-card{background:var(--surface);border:1px solid var(--border);border-radius:16px;overflow:hidden}
+.vid-card iframe{width:100%;aspect-ratio:16/9;border:none;display:block}
+.vid-card .vb{padding:16px}
+.vid-card .vt{font-weight:600;font-size:15px;margin-bottom:4px}
+.vid-card .vd{font-size:13px;color:var(--text-muted)}
 
 /* TOOLS */
-.tool-box{background:var(--surface);border:1px solid var(--border);border-radius:20px;padding:32px;margin-bottom:24px}
-.tool-box h3{font-family:'Playfair Display',serif;font-size:22px;margin-bottom:16px;color:var(--cream)}
-.input-row{display:flex;gap:12px;align-items:center;flex-wrap:wrap;margin:12px 0}
-.input-field{background:var(--surface2);border:1px solid var(--border);color:var(--text);padding:10px 16px;border-radius:10px;font-size:16px;font-family:'Inter',sans-serif;width:120px;text-align:center}
-.input-field:focus{outline:none;border-color:var(--brown)}
-.input-label{font-size:13px;color:var(--text-muted);font-weight:500}
-.btn{background:var(--brown);color:#000;border:none;padding:12px 24px;border-radius:10px;font-size:14px;font-weight:600;cursor:pointer;font-family:'Inter',sans-serif;transition:all .2s}
+.tbox{background:var(--surface);border:1px solid var(--border);border-radius:20px;padding:32px;margin-bottom:24px}
+.tbox h3{margin:0 0 16px}
+.irow{display:flex;gap:12px;align-items:center;flex-wrap:wrap;margin:12px 0}
+.ifield{background:var(--surface2);border:1px solid var(--border);color:var(--text);padding:10px 16px;border-radius:10px;font-size:16px;font-family:inherit;width:120px;text-align:center}
+.ifield:focus{outline:none;border-color:var(--brown)}
+.ilabel{font-size:13px;color:var(--text-muted);font-weight:500}
+.btn{background:var(--brown);color:#000;border:none;padding:12px 24px;border-radius:10px;font-size:14px;font-weight:600;cursor:pointer;font-family:inherit;transition:all .2s}
 .btn:hover{background:var(--brown-light)}
-.btn-outline{background:none;border:1px solid var(--border);color:var(--text);padding:10px 20px;border-radius:10px;font-size:14px;cursor:pointer;font-family:'Inter',sans-serif;transition:all .2s}
-.btn-outline:hover{border-color:var(--brown);color:var(--brown-light)}
-.timer-display{font-size:64px;font-weight:700;font-family:'Inter',sans-serif;color:var(--cream);text-align:center;margin:20px 0;letter-spacing:4px}
-.timer-btns{display:flex;gap:12px;justify-content:center}
-.result-box{background:var(--surface2);border-radius:12px;padding:20px;margin-top:16px;text-align:center}
-.result-box .big{font-size:36px;font-weight:700;color:var(--cream)}
-.result-box .label{font-size:13px;color:var(--text-muted);margin-top:4px}
-
-/* CHECKLIST */
-.checklist{list-style:none}
-.checklist li{padding:10px 0;border-bottom:1px solid var(--surface2);display:flex;align-items:center;gap:12px;font-size:14px;color:var(--text-muted);cursor:pointer}
-.checklist li:hover{color:var(--text)}
-.checklist li.done{text-decoration:line-through;opacity:.5}
-.check-box{width:22px;height:22px;border:2px solid var(--border);border-radius:6px;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:all .2s}
-.checklist li.done .check-box{background:var(--green);border-color:var(--green);color:#000}
-
-/* GLOSSARY */
-.glossary-grid{columns:2;column-gap:24px}
-.glossary-item{break-inside:avoid;padding:12px 0;border-bottom:1px solid var(--surface2)}
-.glossary-item dt{font-weight:600;color:var(--cream);font-size:15px}
-.glossary-item dd{font-size:13px;color:var(--text-muted);margin-top:2px}
-
-/* NOTES */
-.notes-area{width:100%;min-height:200px;background:var(--surface2);border:1px solid var(--border);border-radius:12px;padding:16px;color:var(--text);font-family:'Inter',sans-serif;font-size:14px;resize:vertical}
-.notes-area:focus{outline:none;border-color:var(--brown)}
-
-/* MODAL */
-.modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,.8);backdrop-filter:blur(10px);z-index:1000;display:none;align-items:center;justify-content:center;padding:20px}
-.modal-overlay.active{display:flex}
-.modal{background:var(--surface);border:1px solid var(--border);border-radius:24px;max-width:640px;width:100%;max-height:85vh;overflow-y:auto;padding:40px;position:relative}
-.modal-close{position:absolute;top:16px;right:16px;background:var(--surface2);border:none;color:var(--text-muted);width:36px;height:36px;border-radius:50%;font-size:18px;cursor:pointer;display:flex;align-items:center;justify-content:center}
-.modal-close:hover{background:var(--border);color:var(--text)}
-.modal::-webkit-scrollbar{width:6px}
-.modal::-webkit-scrollbar-thumb{background:var(--border);border-radius:3px}
+.btn-o{background:none;border:1px solid var(--border);color:var(--text);padding:10px 20px;border-radius:10px;font-size:14px;cursor:pointer;font-family:inherit;transition:all .2s}
+.btn-o:hover{border-color:var(--brown);color:var(--brown-light)}
+.timer-d{font-size:64px;font-weight:700;color:var(--cream);text-align:center;margin:20px 0;letter-spacing:4px}
+.rbox{background:var(--surface2);border-radius:12px;padding:20px;margin-top:16px;text-align:center}
+.rbox .big{font-size:36px;font-weight:700;color:var(--cream)}
+.rbox .lbl{font-size:13px;color:var(--text-muted);margin-top:4px}
 
 /* FILTER */
-.filter-bar{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:24px}
+.fbar{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:24px}
+/* RECIPE GRID */
+.rgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:20px}
+.rcard{background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:24px;cursor:pointer;transition:all .3s}
+.rcard:hover{border-color:var(--brown);transform:translateY(-2px)}
 
-/* INFO GRID */
-.info-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:16px 0}
-.info-box{background:var(--surface2);padding:14px;border-radius:12px;text-align:center}
-.info-box .ib-label{font-size:11px;color:var(--text-muted);text-transform:uppercase;letter-spacing:1px}
-.info-box .ib-value{font-size:16px;font-weight:600;color:var(--cream);margin-top:2px}
+/* MODAL */
+.mo{position:fixed;inset:0;background:rgba(0,0,0,.8);backdrop-filter:blur(10px);z-index:1000;display:none;align-items:center;justify-content:center;padding:20px}
+.mo.active{display:flex}
+.md{background:var(--surface);border:1px solid var(--border);border-radius:24px;max-width:640px;width:100%;max-height:85vh;overflow-y:auto;padding:40px;position:relative}
+.md-close{position:absolute;top:16px;right:16px;background:var(--surface2);border:none;color:var(--text-muted);width:36px;height:36px;border-radius:50%;font-size:18px;cursor:pointer;display:flex;align-items:center;justify-content:center}
+.md-close:hover{background:var(--border);color:var(--text)}
+.md::-webkit-scrollbar{width:6px}.md::-webkit-scrollbar-thumb{background:var(--border);border-radius:3px}
+.igrid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:16px 0}
+.ib{background:var(--surface2);padding:14px;border-radius:12px;text-align:center}
+.ib .l{font-size:11px;color:var(--text-muted);text-transform:uppercase;letter-spacing:1px}
+.ib .v{font-size:16px;font-weight:600;color:var(--cream);margin-top:2px}
+.ratio-bar{display:flex;height:32px;border-radius:8px;overflow:hidden;margin:12px 0;font-size:11px;font-weight:600}
+.ratio-bar div{display:flex;align-items:center;justify-content:center;color:#000}
+.ingr{display:grid;grid-template-columns:1fr 1fr;gap:8px;list-style:none}
+.ingr li{background:var(--surface2);padding:10px 14px;border-radius:10px;font-size:13px;color:var(--text-muted)}
 
-/* INGREDIENTS */
-.ingr-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;list-style:none}
-.ingr-grid li{background:var(--surface2);padding:10px 14px;border-radius:10px;font-size:13px;color:var(--text-muted)}
+/* GLOSSARY */
+.gloss{columns:2;column-gap:24px}
+.gl-item{break-inside:avoid;padding:12px 0;border-bottom:1px solid var(--surface2)}
+.gl-item dt{font-weight:600;color:var(--cream);font-size:15px}
+.gl-item dd{font-size:13px;color:var(--text-muted);margin-top:2px}
+
+/* NOTES */
+.notes-a{width:100%;min-height:200px;background:var(--surface2);border:1px solid var(--border);border-radius:12px;padding:16px;color:var(--text);font-family:inherit;font-size:14px;resize:vertical}
+.notes-a:focus{outline:none;border-color:var(--brown)}
+
+/* CHECKLIST */
+.cklist{list-style:none}
+.cklist li{padding:10px 0;border-bottom:1px solid var(--surface2);display:flex;align-items:center;gap:12px;font-size:14px;color:var(--text-muted);cursor:pointer}
+.cklist li:hover{color:var(--text)}
+.cklist li.done{text-decoration:line-through;opacity:.5}
+.ckbox{width:22px;height:22px;border:2px solid var(--border);border-radius:6px;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:all .2s}
+.cklist li.done .ckbox{background:var(--green);border-color:var(--green);color:#000}
 
 /* LATTE ART PATTERN */
-.pattern-steps{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:16px;margin:16px 0}
-.pattern-step{background:var(--surface2);border-radius:12px;padding:16px;text-align:center}
-.pattern-step .ps-num{font-size:24px;font-weight:700;color:var(--brown);margin-bottom:4px}
-.pattern-step .ps-text{font-size:13px;color:var(--text-muted);line-height:1.5}
+.lp-card{background:var(--surface);border:1px solid var(--border);border-radius:20px;padding:28px;margin-bottom:20px}
+.tag{display:inline-block;background:var(--surface2);color:var(--text-muted);padding:4px 12px;border-radius:100px;font-size:12px;margin:2px}
 
-/* FOOTER */
 footer{text-align:center;padding:40px 20px;color:var(--text-muted);font-size:13px;border-top:1px solid var(--surface2);margin-left:var(--nav-w)}
 
-/* RESPONSIVE */
 @media(max-width:768px){
   nav{top:auto;bottom:0;left:0;width:100%;height:60px;flex-direction:row;padding:0 8px;overflow-x:auto;border-right:none;border-top:1px solid var(--border)}
   nav .logo{display:none}
-  nav a.nav-link{width:40px;height:40px;font-size:18px;flex-shrink:0}
-  nav a.nav-link .tip{display:none}
-  main{margin-left:0;margin-bottom:60px}
-  footer{margin-left:0}
-  .section{padding:40px 16px 60px}
+  nav a.nl{width:40px;height:40px;font-size:18px;flex-shrink:0}
+  nav a.nl .tip{display:none}
+  main{margin-left:0;margin-bottom:60px}footer{margin-left:0}
+  .sec{padding:40px 16px 60px}
   .hero{min-height:calc(100vh - 60px)}
-  .hero-grid{grid-template-columns:repeat(2,1fr)}
-  .grid-2,.grid-3{grid-template-columns:1fr}
-  .video-grid{grid-template-columns:1fr}
-  .glossary-grid{columns:1}
-  .info-grid{grid-template-columns:1fr}
-  .ingr-grid{grid-template-columns:1fr}
-  .pattern-steps{grid-template-columns:1fr}
-  .ref-table{font-size:12px}
-  .ref-table th,.ref-table td{padding:8px}
+  .hgrid{grid-template-columns:repeat(2,1fr)}
+  .vgrid,.rgrid,.vid-grid{grid-template-columns:1fr}
+  .compare{grid-template-columns:1fr}
+  .thermo-wrap{flex-direction:column;align-items:center}
+  .igrid,.ingr{grid-template-columns:1fr}
+  .gloss{columns:1}
 }
 </style>
 </head>
 <body>
 
 <nav id="nav"></nav>
-
 <main>
   <section class="hero" id="accueil">
-    <div class="hero-icon">&#9749;</div>
+    <div style="font-size:72px;position:relative;z-index:1">&#9749;</div>
     <h1>Barista Academy</h1>
-    <p>Ton guide complet pour maitriser l'art du cafe. Calibrage, extraction, recettes, latte art et diagnostic.</p>
-    <div class="hero-grid" id="heroGrid"></div>
+    <p>Guide visuel et interactif pour maitriser l'art du cafe.</p>
+    <div class="hgrid" id="heroGrid"></div>
   </section>
 
-  <section class="section" id="moulin">
-    <div class="section-badge">Moulin & Calibrage</div>
-    <h2>Regler ta mouture</h2>
-    <p class="subtitle">La mouture est LE facteur le plus important. Chaque methode demande une taille de grain differente.</p>
-    <div id="spectrumBar"></div>
+  <!-- MOULIN -->
+  <section class="sec" id="moulin">
+    <div class="badge">Moulin & Calibrage</div>
+    <h2>Comprendre la mouture visuellement</h2>
+    <p class="sub">Chaque methode demande une taille de grain differente. Voici a quoi ca ressemble.</p>
+    <div id="grindVisual"></div>
+    <h3>Tableau de reference</h3>
     <div id="grindTable"></div>
-    <h3 style="font-family:'Playfair Display',serif;color:var(--cream);margin:40px 0 16px">Diagnostic rapide</h3>
-    <div id="grindDiag"></div>
+    <h3>Que se passe-t-il quand c'est mal regle ?</h3>
+    <div id="grindCompare"></div>
   </section>
 
-  <section class="section" id="extraction">
-    <div class="section-badge">Science de l'extraction</div>
-    <h2>Comprendre l'extraction</h2>
-    <p class="subtitle">Maitriser les variables pour obtenir un cafe equilibre a chaque fois.</p>
+  <!-- EXTRACTION -->
+  <section class="sec" id="extraction">
+    <div class="badge">Extraction</div>
+    <h2>Voir la difference</h2>
+    <p class="sub">Apprends a reconnaitre visuellement une bonne extraction d'une mauvaise.</p>
+    <div id="extractVisual"></div>
+    <h3>Les 6 variables — chacune a un effet visuel</h3>
     <div id="extractVars"></div>
-    <h3 style="font-family:'Playfair Display',serif;color:var(--cream);margin:40px 0 16px">Sous-extraction vs Sur-extraction</h3>
-    <div id="extractCompare"></div>
-    <h3 style="font-family:'Playfair Display',serif;color:var(--cream);margin:40px 0 16px">Methode de Dialing-In (reglage espresso)</h3>
-    <div id="dialingSteps" class="steps"></div>
+    <h3>Methode de Dialing-In</h3>
+    <div id="dialSteps" class="steps"></div>
   </section>
 
-  <section class="section" id="recettes">
-    <div class="section-badge">Recettes</div>
-    <h2>Toutes les recettes</h2>
-    <p class="subtitle">25 cafes du monde entier avec les etapes detaillees, ratios et temps.</p>
-    <div class="filter-bar" id="filterBar"></div>
-    <div class="grid-2" id="recipesGrid"></div>
-  </section>
-
-  <section class="section" id="lait">
-    <div class="section-badge">Techniques du lait</div>
-    <h2>Maitriser le lait</h2>
-    <p class="subtitle">La texture du lait fait toute la difference entre un bon et un excellent cafe.</p>
+  <!-- LAIT -->
+  <section class="sec" id="lait">
+    <div class="badge">Techniques du lait</div>
+    <h2>Le lait en images</h2>
+    <p class="sub">Apprends a reconnaitre la bonne texture, la bonne temperature, et les bons gestes.</p>
+    <h3>&#128064; Reconnaitre la texture du lait</h3>
+    <div id="milkTexture"></div>
+    <h3>&#127777; Le thermometre du barista</h3>
+    <div id="milkThermo"></div>
+    <h3>&#9995; Comment tenir le pichet</h3>
+    <div id="milkGrip"></div>
+    <h3>&#128168; Position de la buse vapeur</h3>
+    <div id="milkWand"></div>
+    <h3>Les 4 phases du texturage</h3>
     <div id="milkPhases"></div>
-    <h3 style="font-family:'Playfair Display',serif;color:var(--cream);margin:40px 0 16px">Temperatures par type de lait</h3>
+    <h3>&#128204; Temperatures par type de lait</h3>
     <div id="milkTable"></div>
-    <h3 style="font-family:'Playfair Display',serif;color:var(--cream);margin:40px 0 16px">Diagnostic mousse</h3>
-    <div id="milkDiag"></div>
   </section>
 
-  <section class="section" id="latteart">
-    <div class="section-badge">Latte Art</div>
-    <h2>L'art du versement</h2>
-    <p class="subtitle">Du coeur basique au cygne avance, apprends chaque pattern etape par etape.</p>
-    <div id="lattePrereq"></div>
+  <!-- LATTE ART -->
+  <section class="sec" id="latteart">
+    <div class="badge">Latte Art</div>
+    <h2>Apprendre chaque pattern</h2>
+    <p class="sub">Du coeur au cygne, etape par etape avec les gestes illustres.</p>
+    <div id="latteHeight"></div>
     <div id="lattePatterns"></div>
-    <h3 style="font-family:'Playfair Display',serif;color:var(--cream);margin:40px 0 16px">Tutoriels video</h3>
-    <div class="video-grid" id="latteVideos"></div>
+    <h3>Tutoriels video</h3>
+    <div class="vid-grid" id="latteVids"></div>
   </section>
 
-  <section class="section" id="diagnostic">
-    <div class="section-badge">Diagnostic</div>
-    <h2>Troubleshooting</h2>
-    <p class="subtitle">Ton espresso n'est pas bon ? Trouve la cause et la solution ici.</p>
+  <!-- RECETTES -->
+  <section class="sec" id="recettes">
+    <div class="badge">Recettes</div>
+    <h2>Toutes les recettes</h2>
+    <p class="sub">25 cafes avec ratios visuels et etapes detaillees.</p>
+    <div class="fbar" id="filterBar"></div>
+    <div class="rgrid" id="recipesGrid"></div>
+  </section>
+
+  <!-- DIAGNOSTIC -->
+  <section class="sec" id="diagnostic">
+    <div class="badge">Diagnostic</div>
+    <h2>Troubleshooting visuel</h2>
+    <p class="sub">Ton cafe n'est pas bon ? Trouve la cause en images.</p>
+    <div id="diagVisual"></div>
+    <h3>Plus de problemes</h3>
     <div id="troubleshoot"></div>
   </section>
 
-  <section class="section" id="outils">
-    <div class="section-badge">Outils</div>
+  <!-- OUTILS -->
+  <section class="sec" id="outils">
+    <div class="badge">Outils</div>
     <h2>Boite a outils</h2>
-    <p class="subtitle">Timer, calculateur de ratio, checklist et carnet de notes.</p>
+    <p class="sub">Timer, calculateur, checklist et carnet de notes.</p>
     <div id="toolsContent"></div>
   </section>
 
-  <section class="section" id="glossaire">
-    <div class="section-badge">Glossaire</div>
+  <!-- GLOSSAIRE -->
+  <section class="sec" id="glossaire">
+    <div class="badge">Glossaire</div>
     <h2>Lexique du barista</h2>
-    <p class="subtitle">Tous les termes techniques que tu dois connaitre.</p>
-    <div class="glossary-grid" id="glossaryContent"></div>
+    <div class="gloss" id="glossContent"></div>
   </section>
 </main>
 
-<div class="modal-overlay" id="modalOverlay">
-  <div class="modal" id="modal"></div>
-</div>
-
-<footer>Barista Academy &mdash; Fait avec passion pour les baristas</footer>
+<div class="mo" id="mo"><div class="md" id="md"></div></div>
+<footer>Barista Academy &mdash; Guide visuel pour baristas</footer>
 
 <script>
-// ===== NAV =====
-const sections=[
-  {id:'accueil',icon:'&#9749;',label:'Accueil'},
-  {id:'moulin',icon:'&#9881;',label:'Moulin'},
-  {id:'extraction',icon:'&#128300;',label:'Extraction'},
-  {id:'recettes',icon:'&#128203;',label:'Recettes'},
-  {id:'lait',icon:'&#129371;',label:'Lait'},
-  {id:'latteart',icon:'&#127912;',label:'Latte Art'},
-  {id:'diagnostic',icon:'&#128269;',label:'Diagnostic'},
-  {id:'outils',icon:'&#128736;',label:'Outils'},
-  {id:'glossaire',icon:'&#128218;',label:'Glossaire'}
-];
-
-document.getElementById('nav').innerHTML=
-  '<div class="logo">&#9749;</div>'+
-  sections.map(s=>`<a href="#${s.id}" class="nav-link" data-section="${s.id}">${s.icon}<span class="tip">${s.label}</span></a>`).join('');
-
-document.getElementById('heroGrid').innerHTML=sections.slice(1).map(s=>
-  `<a href="#${s.id}" class="hero-card"><div class="hc-icon">${s.icon}</div><div class="hc-title">${s.label}</div></a>`
-).join('');
-
-// Active nav on scroll
-const obs=new IntersectionObserver(entries=>{
-  entries.forEach(e=>{
-    if(e.isIntersecting){
-      document.querySelectorAll('.nav-link').forEach(l=>l.classList.remove('active'));
-      const link=document.querySelector(`.nav-link[data-section="${e.target.id}"]`);
-      if(link) link.classList.add('active');
-    }
-  });
-},{threshold:0.3,rootMargin:'-20% 0px -60% 0px'});
-sections.forEach(s=>{const el=document.getElementById(s.id);if(el)obs.observe(el)});
-
-// ===== MOULIN =====
-const grindSpectrum=[
-  {name:'Ultra-fin',color:'#78350f',methods:'Cafe turc'},
-  {name:'Tres fin',color:'#92400e',methods:'Espresso'},
-  {name:'Fin',color:'#b45309',methods:'Moka, AeroPress'},
-  {name:'Moyen-fin',color:'#d97706',methods:'V60, Siphon'},
-  {name:'Moyen',color:'#f59e0b',methods:'Chemex, filtre'},
-  {name:'Moyen-gros',color:'#fbbf24',methods:'Cafetiere piston'},
-  {name:'Gros',color:'#fde68a',methods:'Cold Brew'}
-];
-
-document.getElementById('spectrumBar').innerHTML=
-  '<div class="spectrum">'+
-  grindSpectrum.map(g=>`<div class="spectrum-seg" style="background:${g.color}" title="${g.methods}">${g.name}<br><small>${g.methods}</small></div>`).join('')+
-  '</div>';
-
-const grindRef=[
-  {method:'Espresso',grind:'Tres fin (sucre en poudre)',dose:'7-9g / 14-18g double',ratio:'1:2',time:'25-30s',temp:'90-96°C'},
-  {method:'Moka (Bialetti)',grind:'Fin (sel fin)',dose:'15-20g',ratio:'1:7',time:'3-5 min',temp:'100°C'},
-  {method:'AeroPress',grind:'Fin a moyen',dose:'15-18g',ratio:'1:12-15',time:'1-2 min',temp:'80-90°C'},
-  {method:'V60 Pour Over',grind:'Moyen-fin (sable)',dose:'15g',ratio:'1:16',time:'3-4 min',temp:'92-96°C'},
-  {method:'Chemex',grind:'Moyen (gros sable)',dose:'30g',ratio:'1:16',time:'4-5 min',temp:'92-96°C'},
-  {method:'French Press',grind:'Gros (gros sel)',dose:'30g',ratio:'1:15',time:'4 min',temp:'92-96°C'},
-  {method:'Cold Brew',grind:'Tres gros',dose:'100g',ratio:'1:8-10',time:'12-24h',temp:'Froid'}
-];
-
-document.getElementById('grindTable').innerHTML=
-  '<div style="overflow-x:auto"><table class="ref-table"><thead><tr>'+
-  '<th>Methode</th><th>Mouture</th><th>Dose</th><th>Ratio</th><th>Temps</th><th>Temp.</th>'+
-  '</tr></thead><tbody>'+
-  grindRef.map(r=>`<tr><td><strong style="color:var(--text)">${r.method}</strong></td><td>${r.grind}</td><td>${r.dose}</td><td>${r.ratio}</td><td>${r.time}</td><td>${r.temp}</td></tr>`).join('')+
-  '</tbody></table></div>';
-
-const grindDiag=[
-  {q:'Le cafe coule trop vite (espresso < 20s)',a:'<strong>Mouture trop grosse.</strong> Serrez le moulin (plus fin). Verifiez aussi le tassage : il doit etre uniforme avec ~15kg de pression. Si le probleme persiste, augmentez la dose de 0.5g.'},
-  {q:'Le cafe coule trop lentement (espresso > 35s)',a:'<strong>Mouture trop fine.</strong> Desserrez le moulin (plus gros). Verifiez qu\'il n\'y a pas de channeling (passage prefere de l\'eau). Reduisez la dose de 0.5g si necessaire.'},
-  {q:'Le cafe est aqueux et acide',a:'<strong>Sous-extraction.</strong> La mouture est probablement trop grosse ou le temps trop court. Affinez la mouture graduellement. Verifiez aussi la temperature (trop basse = sous-extraction).'},
-  {q:'Le cafe est amer et astringent',a:'<strong>Sur-extraction.</strong> La mouture est trop fine ou le temps trop long. Rendez la mouture plus grosse. En filtre, verifiez que vous ne versez pas trop lentement.'},
-  {q:'L\'espresso sort sur les cotes du porte-filtre',a:'<strong>Channeling.</strong> Le tassage n\'est pas uniforme. Distribuez bien le cafe dans le panier avant de tasser. Utilisez la technique WDT (aiguille) pour casser les grumeaux.'},
-  {q:'Apres avoir change de cafe, tout est desequilibre',a:'<strong>Normal !</strong> Chaque cafe a une densite et sechage different. Apres chaque changement de cafe, recommencez le dialing-in : ajustez la mouture de 1-2 crans et testez.'}
-];
-
-document.getElementById('grindDiag').innerHTML=grindDiag.map(d=>
-  `<div class="diag-card"><div class="diag-header" onclick="this.parentElement.classList.toggle('open')"><span>${d.q}</span><span class="arrow">&#9660;</span></div><div class="diag-body"><div class="diag-body-inner">${d.a}</div></div></div>`
-).join('');
-
-// ===== EXTRACTION =====
-const extractVars=[
-  {icon:'&#9878;',title:'Dose',desc:'Le poids de cafe sec en grammes. Plus de dose = plus de corps et d\'intensite. Standard espresso : 18g pour un double.'},
-  {icon:'&#9201;',title:'Temps',desc:'La duree de contact eau/cafe. Espresso : 25-30s. V60 : 3-4 min. Un temps trop long = sur-extraction (amer). Trop court = sous-extraction (acide).'},
-  {icon:'&#127777;',title:'Temperature',desc:'L\'eau entre 90-96°C pour la plupart des methodes. Plus chaud = plus d\'extraction. Cafes torrefies clairs : 94-96°C. Torrefies fonces : 90-92°C.'},
-  {icon:'&#9881;',title:'Mouture',desc:'La variable principale d\'ajustement. Plus fin = plus de surface = plus d\'extraction. Ajustez toujours la mouture AVANT de changer la dose.'},
-  {icon:'&#128200;',title:'Ratio',desc:'Le rapport dose/rendement. Espresso standard : 1:2 (18g in → 36g out). Ristretto : 1:1.5. Lungo : 1:3. En filtre : 1:15 a 1:17.'},
-  {icon:'&#128167;',title:'Eau',desc:'Utilisez de l\'eau filtree. Le TDS ideal est 75-150 ppm. Une eau trop douce = cafe plat. Trop dure = cafe amer et entartre la machine.'}
-];
-
-document.getElementById('extractVars').innerHTML='<div class="grid-3">'+
-  extractVars.map(v=>`<div class="card"><div class="card-icon">${v.icon}</div><h3>${v.title}</h3><p>${v.desc}</p></div>`).join('')+'</div>';
-
-document.getElementById('extractCompare').innerHTML=`<div class="grid-2">
-<div class="card" style="border-color:#ef4444">
-  <div class="card-label" style="color:#f87171">&#128308; Sous-extraction</div>
-  <h3>Cafe acide et aqueux</h3>
-  <p><strong>Gout :</strong> Aigre, acide agressif, sal&eacute;, manque de douceur, pas de corps</p>
-  <p><strong>Crema :</strong> Claire, fine, se dissipe vite</p>
-  <p><strong>Ecoulement :</strong> Trop rapide, couleur claire</p>
-  <p style="margin-top:12px"><strong>Solutions :</strong></p>
-  <ul style="margin-left:20px;font-size:14px;color:var(--text-muted)">
-    <li>Affiner la mouture (plus fin)</li>
-    <li>Augmenter le temps d'extraction</li>
-    <li>Augmenter la temperature</li>
-    <li>Augmenter la dose</li>
-  </ul>
-</div>
-<div class="card" style="border-color:#f59e0b">
-  <div class="card-label" style="color:#fbbf24">&#128992; Sur-extraction</div>
-  <h3>Cafe amer et astringent</h3>
-  <p><strong>Gout :</strong> Amer, astringent, brule, sec en bouche, desagreable</p>
-  <p><strong>Crema :</strong> Foncee, tache noire au centre, fine</p>
-  <p><strong>Ecoulement :</strong> Trop lent, goutte-a-goutte, couleur foncee</p>
-  <p style="margin-top:12px"><strong>Solutions :</strong></p>
-  <ul style="margin-left:20px;font-size:14px;color:var(--text-muted)">
-    <li>Rendre la mouture plus grosse</li>
-    <li>Reduire le temps d'extraction</li>
-    <li>Baisser la temperature</li>
-    <li>Reduire la dose</li>
-  </ul>
-</div></div>`;
-
-const dialingIn=[
-  'Commencez avec une dose standard : 18g pour un double espresso.',
-  'Reglez le ratio cible a 1:2 (18g in → 36g out sur la balance).',
-  'Faites un premier shot et chronometrez. Cible : 25-30 secondes.',
-  'Si trop rapide (< 22s) : affinez la mouture d\'un cran. Si trop lent (> 35s) : rendez la mouture plus grosse d\'un cran.',
-  'Goutez ! Acide = sous-extraction (plus fin). Amer = sur-extraction (plus gros). Ne changez qu\'UNE variable a la fois.',
-  'Quand le temps est bon (25-30s), ajustez le ratio : plus de rendement = plus doux, moins = plus intense.',
-  'Notez vos reglages dans le carnet (section Outils) : cafe, mouture, dose, rendement, temps, gout.',
-  'Refaites le dialing-in a chaque changement de cafe ou tous les 2-3 jours (le cafe evolue apres torrefaction).'
-];
-
-document.getElementById('dialingSteps').innerHTML=dialingIn.map(s=>`<div class="step">${s}</div>`).join('');
-
-// ===== RECETTES =====
-const coffees=[
-  {id:1,name:"Espresso",cat:"espresso",origin:"Italie",icon:"\u2615",grad:"linear-gradient(135deg,#78350f,#451a03)",desc:"Shot concentre et intense avec une crema doree. La base de tout.",tags:["Intense","Court"],caff:"63mg",temp:"90-96°C",time:"25-30s",ratio:{espresso:100},ingr:["18g de cafe fin","36ml rendement","Machine espresso"],steps:["Moulez fin (sucre en poudre), distribuez dans le panier.","Tassez uniformement avec ~15kg de pression.","Purgez le groupe, verrouillez et lancez l'extraction.","Chrono : le cafe doit couler en 25-30s pour 36g.","La crema doit etre epaisse, noisette, tiger striping = parfait."]},
-  {id:2,name:"Ristretto",cat:"espresso",origin:"Italie",icon:"\u2615",grad:"linear-gradient(135deg,#92400e,#78350f)",desc:"Version hyper concentree de l'espresso. Moins d'eau, plus de douceur.",tags:["Tres intense","Doux"],caff:"45mg",temp:"90-96°C",time:"15-20s",ratio:{espresso:100},ingr:["18g de cafe fin","22-27g rendement"],steps:["Meme preparation que l'espresso.","Arretez l'extraction plus tot : 15-20s.","Le ratio est 1:1.2 a 1:1.5 (18g → 22-27g).","Resultat plus sirupeux et aromatique."]},
-  {id:3,name:"Lungo",cat:"espresso",origin:"Italie",icon:"\u2615",grad:"linear-gradient(135deg,#a16207,#713f12)",desc:"Espresso allonge, plus d'eau traverse le cafe pour un gout plus leger.",tags:["Leger","Allonge"],caff:"80mg",temp:"90-96°C",time:"45-60s",ratio:{espresso:100},ingr:["18g de cafe","54-60g rendement"],steps:["Meme preparation que l'espresso.","Laissez couler plus longtemps : 45-60s.","Ratio 1:3 (18g → 54g).","Attention : risque de sur-extraction (amertume)."]},
-  {id:4,name:"Americano",cat:"espresso",origin:"USA/Italie",icon:"\u2615",grad:"linear-gradient(135deg,#b45309,#92400e)",desc:"Espresso + eau chaude. Invente par les soldats US qui trouvaient l'espresso trop fort.",tags:["Doux","Long"],caff:"63mg",temp:"85-90°C",time:"3min",ratio:{espresso:20,eau:80},ingr:["1 double espresso","150-200ml eau chaude"],steps:["Tirez un double espresso.","Chauffez l'eau a 85-90°C.","Versez l'eau SUR l'espresso (preservera un peu de crema).","Ratio typique : 1 part espresso, 4-6 parts eau."]},
-  {id:5,name:"Cappuccino",cat:"lait",origin:"Italie",icon:"\u2615",grad:"linear-gradient(135deg,#d97706,#b45309)",desc:"L'equilibre parfait : 1/3 espresso, 1/3 lait, 1/3 mousse. Le classique du matin.",tags:["Cremeux","Mousseux"],caff:"63mg",temp:"65-70°C",time:"5min",ratio:{espresso:33,lait:33,mousse:34},ingr:["1 double espresso","120ml lait entier","Mousse dense"],steps:["Tirez un double espresso en tasse 180ml.","Versez lait froid dans le pichet metal.","Texturez : stretching 3-4s puis spinning jusqu'a 65°C.","La mousse doit etre dense et veloutee (1-1.5cm).","Versez en 3 phases : lait, puis mousse, finissez par le motif.","Saupoudrez de cacao si desire."]},
-  {id:6,name:"Latte",cat:"lait",origin:"Italie/USA",icon:"\u2615",grad:"linear-gradient(135deg,#f59e0b,#d97706)",desc:"Plus de lait, fine mousse. La toile ideale pour le latte art.",tags:["Doux","Grand"],caff:"63mg",temp:"65-70°C",time:"5min",ratio:{espresso:15,lait:75,mousse:10},ingr:["1 double espresso","200-250ml lait entier"],steps:["Tirez un double espresso en tasse 300ml.","Texturez le lait : micro-mousse fine (0.5cm max).","Tapotez le pichet pour casser les grosses bulles.","Faites tourner le lait dans le pichet (texture peinture).","Versez au centre : base blanche puis motif latte art."]},
-  {id:7,name:"Flat White",cat:"lait",origin:"Australie/NZ",icon:"\u2615",grad:"linear-gradient(135deg,#fbbf24,#f59e0b)",desc:"Latte court et intense. Micro-mousse ultra veloutee, signature de l'Oceanie.",tags:["Veloute","Intense"],caff:"126mg",temp:"65-70°C",time:"5min",ratio:{espresso:25,lait:70,mousse:5},ingr:["1 double ristretto","150ml lait entier"],steps:["Tirez un double ristretto (ratio 1:1.5).","Texturez le lait : micro-mousse tres fine, brillante.","Aucune bulle visible — texture de peinture wet.","Versez en un mouvement fluide continu.","Moins d'1cm de mousse en surface."]},
-  {id:8,name:"Macchiato",cat:"lait",origin:"Italie",icon:"\u2615",grad:"linear-gradient(135deg,#ca8a04,#a16207)",desc:"Espresso 'tache' d'un nuage de mousse. Juste assez de lait pour adoucir.",tags:["Intense","Court"],caff:"63mg",temp:"65°C",time:"2min",ratio:{espresso:75,mousse:25},ingr:["1 espresso","1-2 cuilleres mousse"],steps:["Tirez un espresso en petite tasse.","Faites mousser un peu de lait (mousse epaisse).","Deposez une cuillere de mousse au centre.","La mousse 'tache' le cafe — pas plus."]},
-  {id:9,name:"Cortado",cat:"lait",origin:"Espagne",icon:"\u2615",grad:"linear-gradient(135deg,#ea580c,#c2410c)",desc:"Espresso coupe a parts egales avec du lait chaud. Equilibre espagnol.",tags:["Equilibre","Court"],caff:"63mg",temp:"65°C",time:"3min",ratio:{espresso:50,lait:50},ingr:["1 double espresso","60ml lait chaud"],steps:["Tirez un double espresso en petit verre.","Chauffez le lait — peu de mousse.","Versez directement sur l'espresso.","Ratio 1:1. Servir en verre Gibraltar."]},
-  {id:10,name:"Latte Macchiato",cat:"lait",origin:"Italie",icon:"\u2615",grad:"linear-gradient(135deg,#eab308,#ca8a04)",desc:"Du lait 'tache' de cafe. Trois couches visibles en verre transparent.",tags:["En couches","Visuel"],caff:"63mg",temp:"65-70°C",time:"5min",ratio:{lait:60,espresso:15,mousse:25},ingr:["1 espresso","200ml lait entier","Grand verre"],steps:["Texturez le lait avec mousse epaisse.","Versez dans un grand verre transparent.","Attendez 30s que les couches separent.","Tirez un espresso.","Versez l'espresso LENTEMENT au centre a travers la mousse.","3 couches : lait blanc, cafe brun, mousse."]},
-  {id:11,name:"Mocha",cat:"lait",origin:"USA",icon:"\u2615",grad:"linear-gradient(135deg,#7c2d12,#451a03)",desc:"Cafe + chocolat + lait + creme fouettee. Le dessert liquide.",tags:["Chocolat","Gourmand"],caff:"63mg",temp:"65-70°C",time:"6min",ratio:{espresso:15,chocolat:10,lait:55,creme:20},ingr:["1 double espresso","2 cuilleres cacao/sirop choco","150ml lait","Creme fouettee"],steps:["Mettez le cacao/sirop au fond de la tasse.","Tirez un espresso dessus et melangez bien.","Texturez le lait et versez.","Couronnez de creme fouettee.","Saupoudrez de cacao en poudre."]},
-  {id:12,name:"Cafe au Lait",cat:"lait",origin:"France",icon:"\u2615",grad:"linear-gradient(135deg,#c2410c,#9a3412)",desc:"Le classique francais : cafe filtre + lait chaud a parts egales dans un bol.",tags:["Francais","Simple"],caff:"95mg",temp:"70°C",time:"5min",ratio:{cafe:50,lait:50},ingr:["150ml cafe filtre fort","150ml lait chaud"],steps:["Preparez un cafe filtre bien fort.","Chauffez le lait sans bouillir.","Versez les deux simultanement dans un bol.","Ratio 1:1. Accompagnez d'un croissant."]},
-  {id:13,name:"V60 Pour Over",cat:"filtre",origin:"Japon",icon:"\u2615",grad:"linear-gradient(135deg,#065f46,#064e3b)",desc:"Methode douce qui revele les notes subtiles. Clair, aromatique, delicat.",tags:["Delicat","Aromatique"],caff:"95mg",temp:"92-96°C",time:"3-4min",ratio:{cafe:100},ingr:["15g cafe moyen-fin","250ml eau a 93°C","V60 + filtre papier"],steps:["Rincez le filtre a l'eau chaude.","Ajoutez le cafe, creez un puits au centre.","Bloom : 30ml d'eau, attendez 45s (le cafe gonfle et degaze).","Versez en spirale lente du centre vers l'exterieur.","Maintenir le niveau constant par petites coulees.","Temps total d'ecoulement : 3-4 minutes.","Si trop rapide = mouture plus fine. Trop lent = plus grosse."]},
-  {id:14,name:"Chemex",cat:"filtre",origin:"USA",icon:"\u2615",grad:"linear-gradient(135deg,#0d9488,#0f766e)",desc:"Filtre epais = cafe ultra propre et limpide. Un objet d'art en verre.",tags:["Propre","Limpide"],caff:"95mg",temp:"92-96°C",time:"4-5min",ratio:{cafe:100},ingr:["30g cafe moyen-gros","500ml eau 93°C","Chemex + filtre"],steps:["Filtre : cote 3 couches vers le bec.","Rincez abondamment puis videz.","Bloom : 60ml d'eau, 45 secondes.","Versez en cercles concentriques reguliers.","Ne versez JAMAIS directement sur le filtre.","Temps total : 4-5 minutes."]},
-  {id:15,name:"French Press",cat:"filtre",origin:"France",icon:"\u2615",grad:"linear-gradient(135deg,#1e40af,#1e3a8a)",desc:"Immersion totale. Cafe riche en corps avec toutes les huiles preservees.",tags:["Corpose","Riche"],caff:"100mg",temp:"92-96°C",time:"4min",ratio:{cafe:100},ingr:["30g cafe gros (gros sel)","500ml eau 93°C","Cafetiere a piston"],steps:["Prechauffez la cafetiere.","Ajoutez le cafe grossier.","Versez toute l'eau d'un coup, chrono.","Remuez a 1 minute.","Couvercle sans presser. Attendez 4 min total.","Pressez lentement et regulierement.","Servez IMMEDIATEMENT (sinon sur-extraction)."]},
-  {id:16,name:"AeroPress",cat:"filtre",origin:"USA",icon:"\u2615",grad:"linear-gradient(135deg,#7c3aed,#6d28d9)",desc:"Portable et polyvalente. Cafe doux et concentre. Favorite des voyageurs.",tags:["Portable","Doux"],caff:"80mg",temp:"80-90°C",time:"2min",ratio:{cafe:100},ingr:["15g cafe fin-moyen","200ml eau 85°C","AeroPress + filtre"],steps:["Methode inversee : piston en bas.","Ajoutez le cafe puis l'eau.","Remuez 10 secondes.","Vissez le filtre rince sur le capuchon.","Attendez 1 min total, retournez sur la tasse.","Pressez lentement 20-30 secondes."]},
-  {id:17,name:"Moka Bialetti",cat:"filtre",origin:"Italie",icon:"\u2615",grad:"linear-gradient(135deg,#dc2626,#b91c1c)",desc:"La mythique cafetiere italienne. Fort, aromatique, tradition pure.",tags:["Fort","Traditionnel"],caff:"105mg",temp:"100°C",time:"5min",ratio:{cafe:100},ingr:["15-20g cafe moyen-fin","Eau chaude","Cafetiere Moka"],steps:["Eau chaude dans la base jusqu'a la soupape.","Cafe dans le filtre SANS tasser.","Assemblez et placez sur feu moyen.","Couvercle ouvert pour surveiller.","Quand ca siffle, baissez le feu.","Retirez quand le haut est a moitie plein.","Refroidir la base sous l'eau froide = stop extraction."]},
-  {id:18,name:"Cold Brew",cat:"froid",origin:"Japon/USA",icon:"\ud83e\uddca",grad:"linear-gradient(135deg,#0e7490,#155e75)",desc:"Infusion a froid 12-24h. Doux, peu acide, naturellement sucre.",tags:["Froid","Doux"],caff:"200mg",temp:"Froid",time:"12-24h",ratio:{cafe:100},ingr:["100g cafe tres gros","1L eau froide filtree","Bocal + filtre"],steps:["Mouture tres grosse (plus gros que French Press).","Melangez cafe + eau froide dans un bocal.","Couvrez, mettez au frigo.","12h = doux. 18h = equilibre. 24h = intense.","Filtrez a travers tissu ou papier.","C'est un concentre : diluez 1:1 avec eau ou lait.","Conservation : 2 semaines au frigo."]},
-  {id:19,name:"Iced Latte",cat:"froid",origin:"USA",icon:"\ud83e\uddca",grad:"linear-gradient(135deg,#0284c7,#0369a1)",desc:"Espresso sur lait froid et glace. Rafraichissant et photogenique.",tags:["Glace","Ete"],caff:"63mg",temp:"Froid",time:"3min",ratio:{espresso:15,lait:65,glace:20},ingr:["1 double espresso","200ml lait froid","Glacons"],steps:["Remplissez un grand verre de glacons.","Versez le lait froid.","Tirez un double espresso.","Versez LENTEMENT l'espresso sur le lait.","Les couches se forment naturellement.","Ajoutez sirop vanille/caramel si souhaite."]},
-  {id:20,name:"Affogato",cat:"froid",origin:"Italie",icon:"\ud83c\udf68",grad:"linear-gradient(135deg,#e11d48,#be123c)",desc:"Espresso brulant sur glace vanille. Dessert + cafe = dolce vita.",tags:["Dessert","Gourmand"],caff:"63mg",temp:"Chaud+froid",time:"2min",ratio:{espresso:40,glace:60},ingr:["1 espresso bien chaud","1-2 boules glace vanille"],steps:["1-2 boules de glace vanille dans un verre.","Tirez un espresso tres chaud.","Versez immediatement sur la glace.","Degustez a la cuillere — ne tardez pas !"]},
-  {id:21,name:"Espresso Tonic",cat:"froid",origin:"Scandinavie",icon:"\ud83e\uddca",grad:"linear-gradient(135deg,#06b6d4,#0891b2)",desc:"Espresso + tonic = petillant et surprenant. La tendance des specialty cafes.",tags:["Petillant","Tendance"],caff:"63mg",temp:"Froid",time:"3min",ratio:{espresso:25,tonic:60,glace:15},ingr:["1 double espresso","150ml tonic","Glacons","Citron"],steps:["Glacons dans un grand verre.","Versez le tonic frais.","Tirez un double espresso, laissez refroidir 1 min.","Versez l'espresso sur le dos d'une cuillere.","Les couches se separent.","Tranche de citron ou orange."]},
-  {id:22,name:"Cafe Turc",cat:"monde",origin:"Turquie",icon:"\u2615",grad:"linear-gradient(135deg,#b91c1c,#991b1b)",desc:"Ultra-fin dans un cezve. Epais, aromatique, parfume a la cardamome.",tags:["Traditionnel","Epice"],caff:"50mg",temp:"70°C",time:"5min",ratio:{cafe:100},ingr:["7g cafe ultra-fin (farine)","60ml eau froide","Cezve (ibrik)","Cardamome"],steps:["Eau froide dans le cezve.","Ajoutez cafe + sucre (sans remuer).","Feu tres doux.","Quand la mousse monte : retirez du feu.","Versez un peu de mousse dans la tasse.","Remettez sur le feu, laissez monter encore.","Versez lentement. Attendez 1 min (le marc se depose).","Ne buvez PAS le fond."]},
-  {id:23,name:"Cafe Vietnamien",cat:"monde",origin:"Vietnam",icon:"\u2615",grad:"linear-gradient(135deg,#15803d,#166534)",desc:"Filtre phin + lait concentre sucre. Intense et incroyablement doux.",tags:["Sucre","Intense"],caff:"100mg",temp:"96°C",time:"5-7min",ratio:{cafe:30,lait:70},ingr:["15g robusta grossier","Lait concentre sucre","Filtre phin"],steps:["2-3 cuilleres lait concentre au fond du verre.","Placez le phin sur le verre.","Ajoutez le cafe, tassez legerement.","Pre-infusion : un peu d'eau, 20 secondes.","Remplissez le phin d'eau chaude, couvrez.","Le cafe s'ecoule en 5-7 min.","Retirez le phin, melangez. Glacons pour version glacee."]},
-  {id:24,name:"Frappe Grec",cat:"monde",origin:"Grece",icon:"\ud83e\uddca",grad:"linear-gradient(135deg,#2563eb,#1d4ed8)",desc:"Cafe instantane battu en mousse epaisse. L'icone de l'ete mediterraneen.",tags:["Mousse","Ete"],caff:"60mg",temp:"Froid",time:"3min",ratio:{cafe:100},ingr:["2 cuilleres cafe instantane","2 cuilleres sucre","Eau froide","Glacons"],steps:["Cafe + sucre + 3 cuilleres d'eau dans un shaker.","Secouez vigoureusement 30 secondes.","La mousse doit etre epaisse et claire.","Glacons dans un grand verre.","Versez la mousse sur les glacons.","Completez avec eau froide. Trait de lait optionnel."]},
-  {id:25,name:"Irish Coffee",cat:"monde",origin:"Irlande",icon:"\u2615",grad:"linear-gradient(135deg,#854d0e,#713f12)",desc:"Cafe chaud + whiskey + creme. Le cocktail-cafe legendaire.",tags:["Alcoolise","Creme"],caff:"95mg",temp:"80°C",time:"5min",ratio:{cafe:50,whiskey:15,creme:35},ingr:["150ml cafe filtre","40ml whiskey irlandais","Sucre brun","Creme epaisse"],steps:["Prechauffez le verre a l'eau chaude.","Sucre + whiskey dans le verre.","Versez le cafe chaud, melangez.","Fouettez legerement la creme (epaisse mais coulante).","Versez sur le dos d'une cuillere pour qu'elle flotte.","Buvez le cafe A TRAVERS la creme — ne melangez pas."]}
-];
-
-const catNames={espresso:"Espresso",lait:"A base de lait",filtre:"Filtre & Infusion",froid:"Cafe froid",monde:"Du monde"};
-const catColors={espresso:'#78350f',lait:'#d97706',filtre:'#065f46',froid:'#0284c7',monde:'#b91c1c'};
-let activeFilter='all';
-
-function renderRecipes(){
-  const cats=['all',...Object.keys(catNames)];
-  document.getElementById('filterBar').innerHTML=cats.map(c=>
-    `<button class="btn-outline${activeFilter===c?' active':''}" style="${activeFilter===c?'background:var(--brown);border-color:var(--brown);color:#000':''}" onclick="activeFilter='${c}';renderRecipes()">${c==='all'?'Tous':catNames[c]}</button>`
-  ).join('');
-
-  const filtered=activeFilter==='all'?coffees:coffees.filter(c=>c.cat===activeFilter);
-  document.getElementById('recipesGrid').innerHTML=filtered.map(c=>`
-    <div class="card" style="cursor:pointer" onclick="openRecipe(${c.id})">
-      <div style="display:flex;align-items:center;gap:12px;margin-bottom:12px">
-        <div style="font-size:36px">${c.icon}</div>
-        <div><div class="card-label">${catNames[c.cat]}</div><h3>${c.name}</h3></div>
-      </div>
-      <p>${c.desc}</p>
-      <div style="margin-top:12px">${c.tags.map(t=>`<span class="tag">${t}</span>`).join('')}</div>
-      <div style="margin-top:12px;font-size:13px;color:var(--text-muted)">&#9201; ${c.time} &middot; &#127777; ${c.temp} &middot; &#9889; ${c.caff}</div>
-    </div>`).join('');
-}
-
-function openRecipe(id){
-  const c=coffees.find(x=>x.id===id);if(!c)return;
-  const ratioColors={espresso:'#78350f',lait:'#fbbf24',mousse:'#f5f5dc',eau:'#60a5fa',chocolat:'#451a03',creme:'#fef3c7',glace:'#bae6fd',cafe:'#92400e',tonic:'#06b6d4',whiskey:'#b45309'};
-  let ratioHTML='';
-  if(c.ratio){
-    ratioHTML='<div class="ratio-bar">'+Object.entries(c.ratio).map(([k,v])=>
-      `<div style="width:${v}%;background:${ratioColors[k]||'#888'}">${k} ${v}%</div>`
-    ).join('')+'</div>';
+// ===== SVG HELPERS =====
+function svgPitcher(opts={}){
+  const {tilt=0,milk='#fef3c7',fill=70,bubbles=false,bigBubbles=false,steam=false,shimmer=false}=opts;
+  let bubblesHTML='';
+  if(bigBubbles){
+    bubblesHTML=`<circle cx="55" cy="${130-fill*0.8}" r="6" fill="none" stroke="#fff" stroke-width="1.5" opacity=".5" class="anim-bubble"/>
+    <circle cx="75" cy="${140-fill*0.8}" r="8" fill="none" stroke="#fff" stroke-width="1.5" opacity=".4" class="anim-bubble2"/>
+    <circle cx="65" cy="${120-fill*0.8}" r="5" fill="none" stroke="#fff" stroke-width="1.5" opacity=".5" class="anim-bubble3"/>
+    <circle cx="85" cy="${135-fill*0.8}" r="7" fill="none" stroke="#fff" stroke-width="1.5" opacity=".3" class="anim-bubble"/>
+    <circle cx="48" cy="${125-fill*0.8}" r="4" fill="none" stroke="#fff" stroke-width="1.5" opacity=".4" class="anim-bubble2"/>`;
+  }else if(bubbles){
+    bubblesHTML=`<circle cx="58" cy="${135-fill*0.8}" r="2" fill="#fff" opacity=".3" class="anim-bubble"/>
+    <circle cx="72" cy="${130-fill*0.8}" r="1.5" fill="#fff" opacity=".25" class="anim-bubble2"/>
+    <circle cx="80" cy="${138-fill*0.8}" r="1" fill="#fff" opacity=".2" class="anim-bubble3"/>`;
   }
-  document.getElementById('modal').innerHTML=`
-    <button class="modal-close" onclick="closeModal()">&times;</button>
-    <div style="font-size:48px;margin-bottom:12px">${c.icon}</div>
-    <h2 style="font-family:'Playfair Display',serif;font-size:28px">${c.name}</h2>
-    <div style="color:var(--brown-light);font-size:14px;margin-bottom:16px">${c.origin} &middot; ${catNames[c.cat]}</div>
-    <p style="color:var(--text-muted);font-size:14px;line-height:1.7">${c.desc}</p>
-    <div class="info-grid"><div class="info-box"><div class="ib-label">Cafeine</div><div class="ib-value">${c.caff}</div></div><div class="info-box"><div class="ib-label">Temperature</div><div class="ib-value">${c.temp}</div></div><div class="info-box"><div class="ib-label">Temps</div><div class="ib-value">${c.time}</div></div></div>
-    <h3 style="font-family:'Playfair Display',serif;color:var(--cream);margin:24px 0 8px">Ratio visuel</h3>
-    ${ratioHTML}
-    <h3 style="font-family:'Playfair Display',serif;color:var(--cream);margin:24px 0 8px">Ingredients</h3>
-    <ul class="ingr-grid">${c.ingr.map(i=>`<li>${i}</li>`).join('')}</ul>
-    <h3 style="font-family:'Playfair Display',serif;color:var(--cream);margin:24px 0 8px">Preparation</h3>
-    <div class="steps">${c.steps.map(s=>`<div class="step">${s}</div>`).join('')}</div>`;
-  document.getElementById('modalOverlay').classList.add('active');
-  document.body.style.overflow='hidden';
+  let steamHTML='';
+  if(steam){
+    steamHTML=`<path d="M55,55 Q58,45 55,35" stroke="#fff" stroke-width="2" fill="none" opacity=".15" class="steam-line"/>
+    <path d="M68,52 Q72,40 68,30" stroke="#fff" stroke-width="2" fill="none" opacity=".12" class="steam-line2"/>
+    <path d="M80,55 Q77,43 80,33" stroke="#fff" stroke-width="2" fill="none" opacity=".1" class="steam-line3"/>`;
+  }
+  let shimmerHTML='';
+  if(shimmer){
+    shimmerHTML=`<ellipse cx="65" cy="${130-fill*0.8-5}" rx="20" ry="2" fill="#fff" opacity=".15" style="animation:shimmer 3s ease-in-out infinite"/>`;
+  }
+  return `<svg viewBox="0 0 130 180" width="130" height="180" style="transform:rotate(${tilt}deg)">
+    <!-- Pitcher body -->
+    <path d="M35,60 L30,150 Q30,165 65,165 Q100,165 100,150 L95,60" fill="${'var(--surface2)'}" stroke="var(--border)" stroke-width="2"/>
+    <!-- Handle -->
+    <path d="M100,70 Q120,70 118,110 Q116,145 100,150" fill="none" stroke="var(--border)" stroke-width="4" stroke-linecap="round"/>
+    <!-- Spout -->
+    <path d="M35,60 Q25,55 20,50" fill="none" stroke="var(--border)" stroke-width="3" stroke-linecap="round"/>
+    <!-- Milk fill -->
+    <clipPath id="pc${tilt}${fill}"><path d="M36,60 L31,150 Q31,164 65,164 Q99,164 99,150 L96,60 Z"/></clipPath>
+    <rect x="30" y="${160-fill*1.05}" width="72" height="${fill*1.05+10}" fill="${milk}" opacity=".85" clip-path="url(#pc${tilt}${fill})"/>
+    ${bubblesHTML}${steamHTML}${shimmerHTML}
+    <!-- Rim -->
+    <path d="M35,60 Q65,55 95,60" fill="none" stroke="var(--border)" stroke-width="2"/>
+  </svg>`;
 }
 
-function closeModal(){
-  document.getElementById('modalOverlay').classList.remove('active');
-  document.body.style.overflow='';
+function svgCup(opts={}){
+  const {color='#78350f',crema='#c2854a',cremaH=12,label=''}=opts;
+  return `<svg viewBox="0 0 120 100" width="120" height="100">
+    <path d="M20,25 L25,80 Q25,90 60,90 Q95,90 95,80 L100,25" fill="${color}" stroke="var(--border)" stroke-width="1.5"/>
+    <ellipse cx="60" cy="25" rx="40" ry="10" fill="${crema}"/>
+    <ellipse cx="60" cy="25" rx="40" ry="10" fill="${crema}" opacity=".7"/>
+    <path d="M100,35 Q115,35 115,55 Q115,72 100,72" fill="none" stroke="var(--border)" stroke-width="3" stroke-linecap="round"/>
+    ${label?`<text x="60" y="110" text-anchor="middle" fill="var(--text-muted)" font-size="11" font-weight="600">${label}</text>`:''}
+  </svg>`;
 }
-document.getElementById('modalOverlay').addEventListener('click',e=>{if(e.target===e.currentTarget)closeModal()});
-document.addEventListener('keydown',e=>{if(e.key==='Escape')closeModal()});
 
-renderRecipes();
+function svgThermo(temp,color){
+  const pct=Math.min(100,Math.max(0,(temp/100)*100));
+  return `<svg viewBox="0 0 40 160" width="40" height="160">
+    <rect x="12" y="10" width="16" height="120" rx="8" fill="var(--surface2)" stroke="var(--border)" stroke-width="1.5"/>
+    <rect x="14" y="${130-pct*1.15}" width="12" height="${pct*1.15}" rx="6" fill="${color}"/>
+    <circle cx="20" cy="140" r="14" fill="${color}" opacity=".9"/>
+    <text x="20" y="145" text-anchor="middle" fill="#000" font-size="10" font-weight="700">${temp}°</text>
+  </svg>`;
+}
 
-// ===== LAIT =====
-const milkPhases=[
-  {icon:'&#128168;',title:'Phase 1 : Stretching (incorporation d\'air)',desc:'Placez la buse juste sous la surface. Vous devez entendre un "tch-tch-tch" regulier. C\'est l\'air qui entre dans le lait. Duree : 2-4 secondes pour un latte, 4-6s pour un cappuccino. Plus vous incorporez d\'air = plus de mousse.'},
-  {icon:'&#127744;',title:'Phase 2 : Spinning (texturage)',desc:'Plongez la buse plus profondement et inclinez le pichet pour creer un vortex (tourbillon). Cette phase casse les grosses bulles et cree la micro-mousse veloutee. Duree : jusqu\'a atteindre 65°C. Le lait doit tourner comme une tornade silencieuse.'},
-  {icon:'&#127777;',title:'Phase 3 : Controle temperature',desc:'Arretez a 65°C (le pichet est chaud mais vous pouvez encore le toucher 2-3 secondes). Au-dela de 70°C le lait brule et les proteines sont detruites — impossible de faire du latte art. En dessous de 55°C = trop froid, pas de douceur.'},
-  {icon:'&#10024;',title:'Phase 4 : Finition',desc:'Tapotez le pichet sur le comptoir pour casser les grosses bulles. Faites tourner le lait en rond dans le pichet : il doit ressembler a de la peinture brillante. Si vous voyez des bulles = recommencez. Le lait est pret pour le latte art.'}
+// ===== NAV =====
+const secs=[
+  {id:'accueil',icon:'&#9749;',l:'Accueil'},{id:'moulin',icon:'&#9881;',l:'Moulin'},
+  {id:'extraction',icon:'&#128300;',l:'Extraction'},{id:'lait',icon:'&#129371;',l:'Lait'},
+  {id:'latteart',icon:'&#127912;',l:'Latte Art'},{id:'recettes',icon:'&#128203;',l:'Recettes'},
+  {id:'diagnostic',icon:'&#128269;',l:'Diagnostic'},{id:'outils',icon:'&#128736;',l:'Outils'},
+  {id:'glossaire',icon:'&#128218;',l:'Glossaire'}
+];
+document.getElementById('nav').innerHTML='<div class="logo">&#9749;</div>'+secs.map(s=>`<a href="#${s.id}" class="nl" data-s="${s.id}">${s.icon}<span class="tip">${s.l}</span></a>`).join('');
+document.getElementById('heroGrid').innerHTML=secs.slice(1).map(s=>`<a href="#${s.id}" class="hc"><span>${s.icon}</span><small>${s.l}</small></a>`).join('');
+const obs=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){document.querySelectorAll('.nl').forEach(l=>l.classList.remove('active'));const l=document.querySelector(`.nl[data-s="${e.target.id}"]`);if(l)l.classList.add('active')}})},{threshold:.3,rootMargin:'-20% 0px -60% 0px'});
+secs.forEach(s=>{const el=document.getElementById(s.id);if(el)obs.observe(el)});
+
+// ===== MOULIN VISUEL =====
+const grinds=[
+  {name:'Cafe turc',size:3,method:'Cezve',color:'#78350f'},
+  {name:'Espresso',size:5,method:'Machine',color:'#92400e'},
+  {name:'Moka / AeroPress',size:8,method:'Cafetiere',color:'#b45309'},
+  {name:'V60 / Siphon',size:11,method:'Pour over',color:'#d97706'},
+  {name:'Chemex / Filtre',size:14,method:'Dripper',color:'#f59e0b'},
+  {name:'French Press',size:18,method:'Piston',color:'#fbbf24'},
+  {name:'Cold Brew',size:22,method:'Infusion froide',color:'#fde68a'}
 ];
 
-document.getElementById('milkPhases').innerHTML='<div class="grid-2">'+
-  milkPhases.map(p=>`<div class="card"><div class="card-icon">${p.icon}</div><h3>${p.title}</h3><p>${p.desc}</p></div>`).join('')+'</div>';
+document.getElementById('grindVisual').innerHTML='<div class="vgrid">'+grinds.map(g=>{
+  let dots='';
+  for(let i=0;i<12;i++){
+    const x=15+Math.random()*90,y=15+Math.random()*60;
+    const s=g.size*(0.7+Math.random()*0.6);
+    dots+=`<circle cx="${x}" cy="${y}" r="${s/2}" fill="${g.color}" opacity="${0.5+Math.random()*0.5}"/>`;
+  }
+  return `<div class="vcard">
+    <div class="vcard-vis" style="background:var(--surface2)">
+      <svg viewBox="0 0 120 90" width="100%" height="100" style="max-width:200px">${dots}</svg>
+    </div>
+    <div class="vcard-body">
+      <h4>${g.name}</h4>
+      <p>Taille : ${g.size<6?'ultra-fin comme de la farine':g.size<10?'fin comme du sucre en poudre':g.size<14?'moyen comme du sable':g.size<18?'gros comme du gros sel':'tres gros comme du poivre concasse'}</p>
+      <p style="color:var(--brown-light);margin-top:4px">${g.method}</p>
+    </div></div>`;
+}).join('')+'</div>';
 
-const milkTypes=[
-  {type:'Lait entier',temp:'60-65°C',mousse:'Excellente',notes:'Le standard. Riche, sucre naturellement, micro-mousse parfaite pour latte art.'},
-  {type:'Lait ecreme',temp:'60-65°C',mousse:'Bonne mais seche',notes:'Mousse plus aérée et seche. Moins de douceur, manque de corps.'},
-  {type:'Lait d\'avoine',temp:'55-62°C',mousse:'Tres bonne',notes:'Le meilleur lait vegetal pour le latte art (Oatly Barista). Texture proche du lait entier.'},
-  {type:'Lait de soja',temp:'55-60°C',mousse:'Correcte',notes:'Peut cailler avec un cafe trop acide. Versez le lait SUR le cafe, jamais l\'inverse. Mousse instable.'},
-  {type:'Lait d\'amande',temp:'55-60°C',mousse:'Difficile',notes:'Mousse fine mais se separe vite. Utilisez une version Barista. Gout prononce.'},
-  {type:'Lait de coco',temp:'55-60°C',mousse:'Faible',notes:'Mousse tres difficile, se separe facilement. Gout fort de coco, pas ideal pour latte art.'}
-];
-
-document.getElementById('milkTable').innerHTML=
-  '<div style="overflow-x:auto"><table class="ref-table"><thead><tr><th>Type</th><th>Temperature max</th><th>Qualite mousse</th><th>Notes</th></tr></thead><tbody>'+
-  milkTypes.map(m=>`<tr><td><strong style="color:var(--text)">${m.type}</strong></td><td>${m.temp}</td><td>${m.mousse}</td><td>${m.notes}</td></tr>`).join('')+
-  '</tbody></table></div>';
-
-const milkDiag=[
-  {q:'Grosses bulles dans la mousse',a:'<strong>Trop d\'air incorpore ou buse mal positionnee.</strong> Reduisez le temps de stretching. La buse doit etre juste sous la surface — si elle est trop haute, elle aspire trop d\'air. Tapotez le pichet apres texturage.'},
-  {q:'Le lait est brule (gout desagreable)',a:'<strong>Temperature trop elevee (>70°C).</strong> Arretez a 65°C. Une fois brule, c\'est irrecuperable — jetez et recommencez. Utilisez un thermometre au debut.'},
-  {q:'La mousse se separe du lait',a:'<strong>Texturage insuffisant.</strong> La phase de spinning n\'a pas ete assez longue. Le vortex doit durer jusqu\'a 65°C pour bien integrer l\'air dans le lait. Faites tourner le lait dans le pichet apres.'},
-  {q:'Pas assez de mousse',a:'<strong>Stretching trop court.</strong> Incorporez de l\'air plus longtemps (3-5 secondes). Assurez-vous d\'entendre le "tch-tch" regulier. Si la buse est trop profonde des le depart, aucun air n\'entre.'},
-  {q:'Le lait ne tourne pas en vortex',a:'<strong>Mauvaise position de la buse.</strong> La buse doit etre decalee du centre, orientee vers le bord du pichet pour creer le tourbillon. Pas au centre, pas trop profond.'},
-  {q:'Le lait vegetal caille dans le cafe',a:'<strong>Le cafe est trop acide ou trop chaud.</strong> Utilisez des versions "Barista" des laits vegetaux. Ne surchauffez pas. Avec le soja : versez le lait SUR le cafe, jamais le cafe sur le lait.'}
-];
-
-document.getElementById('milkDiag').innerHTML=milkDiag.map(d=>
-  `<div class="diag-card"><div class="diag-header" onclick="this.parentElement.classList.toggle('open')"><span>${d.q}</span><span class="arrow">&#9660;</span></div><div class="diag-body"><div class="diag-body-inner">${d.a}</div></div></div>`
-).join('');
-
-// ===== LATTE ART =====
-const lattePatterns=[
-  {name:'Coeur',level:'Debutant',icon:'&#10084;',color:'#ef4444',
-   prereq:'Mousse correcte, versement stable',
-   steps:['Remplissez la tasse a 50% en versant au centre depuis une hauteur de 10cm (le lait plonge sous la crema).','Approchez le pichet du cafe (1-2cm de la surface) et augmentez le debit.','Le blanc de la mousse apparait a la surface : c\'est le debut du motif.','Continuez a verser au meme point — un rond blanc se forme.','Quand la tasse est presque pleine, levez le pichet et coupez a travers le rond pour former la pointe du coeur.'],
-   tips:['Si le blanc n\'apparait pas = pichet trop haut. Rapprochez-le.','Si le motif coule = mousse trop liquide. Texturez plus longtemps.','Le mouvement final (coupe) doit etre rapide et confiant.']},
-  {name:'Rosetta',level:'Intermediaire',icon:'&#127807;',color:'#22c55e',
-   prereq:'Coeur maitrise, mouvement de poignet',
-   steps:['Base : remplissez a 50% en versant au centre (le lait plonge).','Approchez le pichet de la surface, augmentez le debit au centre arriere de la tasse.','Commencez a faire des zigzags rapides avec le poignet (pas le bras !) de gauche a droite.','Avancez lentement vers l\'avant de la tasse tout en zigzaguant — les feuilles se dessinent.','Quand vous atteignez l\'avant, levez le pichet et coupez a travers le centre pour creer la tige.'],
-   tips:['Le zigzag vient du POIGNET uniquement — pas du coude ni du bras.','Vitesse du zigzag = taille des feuilles. Rapide = fines, lent = larges.','Si les feuilles ne sont pas symetriques = le debit n\'est pas constant.']},
-  {name:'Tulipe',level:'Intermediaire',icon:'&#127799;',color:'#f59e0b',
-   prereq:'Coeur maitrise, controle du debit',
-   steps:['Base : remplissez a 40% en versant au centre.','Approchez et versez un premier rond blanc (comme un mini coeur) puis ARRETEZ le debit.','Reculez legerement et versez un deuxieme rond — il pousse le premier vers l\'avant.','Repetez : chaque nouveau rond pousse les precedents. 3 a 5 ronds = tulipe standard.','Sur le dernier rond, coupez a travers tous les cercles pour dessiner la tige.'],
-   tips:['La pause entre chaque "push" est essentielle — arretez nettement le debit.','Chaque rond doit etre de plus en plus petit.','Si les ronds se melangent = pause trop courte ou debit trop fort.']},
-  {name:'Cygne',level:'Avance',icon:'&#129442;',color:'#a855f7',
-   prereq:'Rosetta et coeur maitrises parfaitement',
-   steps:['Base : remplissez a 40%.','Sur un cote de la tasse, faites une rosetta (ce sera l\'aile du cygne).','Au lieu de couper au centre, tirez le lait le long du bord de la tasse (c\'est le cou).','En arrivant en haut, faites un petit mouvement circulaire pour creer la tete (mini coeur).','Levez et coupez pour creer le bec.'],
-   tips:['Le cygne combine 3 techniques : rosetta (aile) + drag (cou) + coeur (tete).','Maitrisez d\'abord la rosetta a 100% avant d\'essayer le cygne.','Entrainez-vous sur 50+ rosetta avant de tenter votre premier cygne.']}
-];
-
-document.getElementById('lattePrereq').innerHTML=`
-<div class="card" style="border-color:var(--brown);margin-bottom:24px">
-  <h3>&#9888; Prerequis avant le latte art</h3>
-  <div class="grid-3" style="margin-top:16px">
-    <div><strong style="color:var(--cream)">Mousse parfaite</strong><p style="font-size:13px;color:var(--text-muted)">Texture peinture brillante, zero bulles visibles. Si la mousse n'est pas bonne, AUCUN motif ne marchera.</p></div>
-    <div><strong style="color:var(--cream)">Hauteur de versement</strong><p style="font-size:13px;color:var(--text-muted)">Haut (10cm) = le lait plonge sous la crema. Bas (1-2cm) = le blanc reste en surface. Les deux phases sont essentielles.</p></div>
-    <div><strong style="color:var(--cream)">Debit constant</strong><p style="font-size:13px;color:var(--text-muted)">Controle du pichet : inclinez progressivement. Un debit irregulier = motif asymetrique. Entrainez-vous avec de l'eau d'abord.</p></div>
+// Grind comparison visual
+document.getElementById('grindCompare').innerHTML=`
+<div class="compare" style="margin-top:20px">
+  <div class="compare-item" style="background:#450a0a">
+    ${svgCup({color:'#d4a574',crema:'#e8c99b',label:''})}
+    <div class="vcard-status st-bad">Trop rapide</div>
+    <h4 style="color:#f87171">Mouture trop grosse</h4>
+    <p>L'eau passe trop vite, le cafe est clair et acide. La crema est fine et pale.</p>
+    <p style="margin-top:8px;color:var(--cream);font-weight:600">&#8594; Serrez le moulin (plus fin)</p>
+  </div>
+  <div class="compare-item" style="background:#052e16">
+    ${svgCup({color:'#5c3a1e',crema:'#b8864a',label:''})}
+    <div class="vcard-status st-good">25-30 secondes</div>
+    <h4 style="color:#4ade80">Mouture parfaite</h4>
+    <p>Le cafe coule comme du miel chaud. Crema epaisse, noisette avec des tiger stripes.</p>
+    <p style="margin-top:8px;color:var(--cream);font-weight:600">&#10003; Ne touchez a rien !</p>
+  </div>
+  <div class="compare-item" style="background:#451a03">
+    ${svgCup({color:'#2c1810',crema:'#4a2a18',label:''})}
+    <div class="vcard-status st-warn">Trop lent</div>
+    <h4 style="color:#fbbf24">Mouture trop fine</h4>
+    <p>Le cafe goutte, tres fonce et amer. Crema foncee avec un point noir.</p>
+    <p style="margin-top:8px;color:var(--cream);font-weight:600">&#8594; Desserrez le moulin (plus gros)</p>
   </div>
 </div>`;
 
-document.getElementById('lattePatterns').innerHTML=lattePatterns.map(p=>`
-<div class="card" style="margin-bottom:20px;border-left:4px solid ${p.color}">
-  <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px">
-    <div><span style="font-size:32px">${p.icon}</span> <span style="font-family:'Playfair Display',serif;font-size:24px">${p.name}</span></div>
-    <span class="tag tag-${p.level==='Debutant'?'green':p.level==='Intermediaire'?'amber':'blue'}">${p.level}</span>
+// Grind table
+const gRef=[
+  {m:'Espresso',g:'Tres fin',dose:'18g',ratio:'1:2',time:'25-30s',temp:'93°C'},
+  {m:'Moka',g:'Fin',dose:'15-20g',ratio:'1:7',time:'3-5 min',temp:'100°C'},
+  {m:'AeroPress',g:'Fin-moyen',dose:'15g',ratio:'1:13',time:'1-2 min',temp:'85°C'},
+  {m:'V60',g:'Moyen-fin',dose:'15g',ratio:'1:16',time:'3-4 min',temp:'93°C'},
+  {m:'Chemex',g:'Moyen',dose:'30g',ratio:'1:16',time:'4-5 min',temp:'93°C'},
+  {m:'French Press',g:'Gros',dose:'30g',ratio:'1:15',time:'4 min',temp:'93°C'},
+  {m:'Cold Brew',g:'Tres gros',dose:'100g',ratio:'1:8',time:'12-24h',temp:'Froid'}
+];
+document.getElementById('grindTable').innerHTML='<div style="overflow-x:auto"><table class="rtable"><thead><tr><th>Methode</th><th>Mouture</th><th>Dose</th><th>Ratio</th><th>Temps</th><th>Temp</th></tr></thead><tbody>'+gRef.map(r=>`<tr><td><strong style="color:var(--text)">${r.m}</strong></td><td>${r.g}</td><td>${r.dose}</td><td>${r.ratio}</td><td>${r.time}</td><td>${r.temp}</td></tr>`).join('')+'</tbody></table></div>';
+
+// ===== EXTRACTION VISUELLE =====
+document.getElementById('extractVisual').innerHTML=`
+<div class="compare">
+  <div class="compare-item" style="background:#450a0a">
+    <svg viewBox="0 0 120 130" width="120" height="130">
+      <rect x="25" y="10" width="70" height="8" rx="4" fill="var(--border)"/>
+      <rect x="40" y="18" width="40" height="60" rx="3" fill="var(--surface3)" stroke="var(--border)" stroke-width="1"/>
+      <!-- fast stream -->
+      <line x1="60" y1="78" x2="60" y2="100" stroke="#d4a574" stroke-width="6" opacity=".8"/>
+      <ellipse cx="60" cy="115" rx="25" ry="8" fill="#d4a574" opacity=".5"/>
+      <text x="60" y="128" text-anchor="middle" fill="#f87171" font-size="9" font-weight="700">TROP RAPIDE</text>
+    </svg>
+    <div class="vcard-status st-bad">Sous-extrait</div>
+    <h4 style="color:#f87171">Acide &amp; aqueux</h4>
+    <p>Couleur claire, coule vite, gout aigre et plat</p>
   </div>
-  <p style="font-size:13px;color:var(--text-muted);margin:8px 0">Prerequis : ${p.prereq}</p>
-  <div class="steps" style="margin-top:16px">${p.steps.map(s=>`<div class="step">${s}</div>`).join('')}</div>
-  <div style="margin-top:16px;padding:16px;background:var(--surface2);border-radius:12px">
-    <strong style="color:var(--cream);font-size:14px">&#128161; Points cles</strong>
-    <ul style="margin:8px 0 0 20px;font-size:13px;color:var(--text-muted)">${p.tips.map(t=>`<li style="margin:4px 0">${t}</li>`).join('')}</ul>
+  <div class="compare-item" style="background:#052e16">
+    <svg viewBox="0 0 120 130" width="120" height="130">
+      <rect x="25" y="10" width="70" height="8" rx="4" fill="var(--border)"/>
+      <rect x="40" y="18" width="40" height="60" rx="3" fill="var(--surface3)" stroke="var(--border)" stroke-width="1"/>
+      <!-- perfect stream like honey -->
+      <path d="M60,78 Q58,85 60,92 Q62,99 60,106" stroke="#8B5E3C" stroke-width="4" fill="none" opacity=".9"/>
+      <ellipse cx="60" cy="115" rx="25" ry="8" fill="#8B5E3C" opacity=".6"/>
+      <text x="60" y="128" text-anchor="middle" fill="#4ade80" font-size="9" font-weight="700">25-30 SEC</text>
+    </svg>
+    <div class="vcard-status st-good">Parfait</div>
+    <h4 style="color:#4ade80">Equilibre &amp; doux</h4>
+    <p>Coule comme du miel, crema tiger stripes</p>
+  </div>
+  <div class="compare-item" style="background:#451a03">
+    <svg viewBox="0 0 120 130" width="120" height="130">
+      <rect x="25" y="10" width="70" height="8" rx="4" fill="var(--border)"/>
+      <rect x="40" y="18" width="40" height="60" rx="3" fill="var(--surface3)" stroke="var(--border)" stroke-width="1"/>
+      <!-- slow drips -->
+      <circle cx="58" cy="85" r="3" fill="#3a2010" opacity=".7" class="anim-bubble"/>
+      <circle cx="62" cy="95" r="2.5" fill="#3a2010" opacity=".6" class="anim-bubble2"/>
+      <ellipse cx="60" cy="115" rx="25" ry="8" fill="#3a2010" opacity=".4"/>
+      <text x="60" y="128" text-anchor="middle" fill="#fbbf24" font-size="9" font-weight="700">TROP LENT</text>
+    </svg>
+    <div class="vcard-status st-warn">Sur-extrait</div>
+    <h4 style="color:#fbbf24">Amer &amp; astringent</h4>
+    <p>Goutte-a-goutte, tres fonce, sec en bouche</p>
+  </div>
+</div>`;
+
+const eVars=[
+  {icon:'&#9878;',t:'Dose',vis:`<svg viewBox="0 0 80 50" width="80"><circle cx="20" cy="25" r="12" fill="var(--brown)" opacity=".4"/><circle cx="45" cy="25" r="16" fill="var(--brown)" opacity=".7"/><circle cx="45" cy="25" r="16" fill="var(--brown)" opacity=".3"/></svg>`,d:'Le poids de cafe sec. Plus = plus intense.'},
+  {icon:'&#9201;',t:'Temps',vis:`<svg viewBox="0 0 80 50" width="80"><rect x="10" y="15" width="15" height="20" rx="3" fill="#f87171" opacity=".6"/><rect x="33" y="10" width="15" height="30" rx="3" fill="#4ade80" opacity=".6"/><rect x="56" y="5" width="15" height="40" rx="3" fill="#fbbf24" opacity=".6"/></svg>`,d:'Contact eau/cafe. Court=acide, long=amer.'},
+  {icon:'&#127777;',t:'Temperature',vis:`<svg viewBox="0 0 80 50" width="80"><rect x="15" y="20" width="50" height="12" rx="6" fill="var(--surface3)"/><rect x="15" y="20" width="33" height="12" rx="6" fill="var(--brown)"/><circle cx="48" cy="26" r="8" fill="var(--brown-light)"/></svg>`,d:'90-96°C. Clair=plus chaud, fonce=moins.'},
+  {icon:'&#9881;',t:'Mouture',vis:`<svg viewBox="0 0 80 50" width="80"><circle cx="15" cy="25" r="3" fill="var(--brown)"/><circle cx="30" cy="25" r="5" fill="var(--brown)"/><circle cx="48" cy="25" r="8" fill="var(--brown)"/><circle cx="68" cy="25" r="10" fill="var(--brown)" opacity=".6"/></svg>`,d:'LA variable #1. Fin=plus d\'extraction.'},
+  {icon:'&#128200;',t:'Ratio',vis:`<svg viewBox="0 0 80 50" width="80"><rect x="10" y="30" width="12" height="15" rx="2" fill="var(--brown)"/><text x="16" y="28" fill="var(--text-muted)" font-size="8" text-anchor="middle">IN</text><rect x="30" y="15" width="12" height="30" rx="2" fill="var(--brown-light)"/><text x="36" y="13" fill="var(--text-muted)" font-size="8" text-anchor="middle">OUT</text><text x="55" y="35" fill="var(--cream)" font-size="14" font-weight="700">1:2</text></svg>`,d:'Dose/rendement. 1:2 standard espresso.'},
+  {icon:'&#128167;',t:'Eau',vis:`<svg viewBox="0 0 80 50" width="80"><path d="M40,10 Q50,30 40,40 Q30,30 40,10Z" fill="#60a5fa" opacity=".5"/><text x="40" y="35" text-anchor="middle" fill="#fff" font-size="8">75-150</text></svg>`,d:'Eau filtree, TDS 75-150 ppm.'}
+];
+document.getElementById('extractVars').innerHTML='<div class="vgrid" style="grid-template-columns:repeat(auto-fill,minmax(220px,1fr))">'+eVars.map(v=>`<div class="vcard"><div class="vcard-vis" style="min-height:80px;background:var(--surface2)">${v.vis}</div><div class="vcard-body"><h4>${v.icon} ${v.t}</h4><p>${v.d}</p></div></div>`).join('')+'</div>';
+
+const dial=['Dose : 18g dans le panier double.','Ratio cible : 1:2 → 36g en tasse.','Premier shot : chrono 25-30s.','Trop rapide ? Mouture plus fine. Trop lent ? Plus grosse.','GOUTEZ : acide=plus fin, amer=plus gros. UNE variable a la fois.','Temps bon ? Ajustez le ratio pour le gout.','Notez tout dans le carnet (section Outils).','Refaites apres chaque changement de cafe.'];
+document.getElementById('dialSteps').innerHTML=dial.map(s=>`<div class="step">${s}</div>`).join('');
+
+// ===== LAIT VISUEL =====
+
+// Texture comparison
+document.getElementById('milkTexture').innerHTML=`
+<div class="compare" style="margin-bottom:30px">
+  <div class="compare-item" style="background:#450a0a">
+    <div style="width:130px;height:180px;margin:0 auto">${svgPitcher({fill:65,bigBubbles:true,milk:'#f5f0e0'})}</div>
+    <div class="vcard-status st-bad">Mauvais</div>
+    <h4 style="color:#f87171">Trop de mousse / bulles</h4>
+    <p>Grosses bulles visibles, mousse "cappuccino de machine". Texture rigide et seche.</p>
+    <p style="margin-top:6px;color:var(--cream);font-size:13px"><strong>Cause :</strong> Buse trop haute, trop d'air</p>
+  </div>
+  <div class="compare-item" style="background:#052e16">
+    <div style="width:130px;height:180px;margin:0 auto">${svgPitcher({fill:70,shimmer:true,milk:'#fef9ef'})}</div>
+    <div class="vcard-status st-good">Parfait</div>
+    <h4 style="color:#4ade80">Micro-mousse veloutee</h4>
+    <p>Zero bulles visibles. Surface brillante comme de la peinture. Texture lisse et soyeuse.</p>
+    <p style="margin-top:6px;color:var(--cream);font-size:13px"><strong>Objectif :</strong> Aspect "wet paint"</p>
+  </div>
+  <div class="compare-item" style="background:#451a03">
+    <div style="width:130px;height:180px;margin:0 auto">${svgPitcher({fill:60,milk:'#f0ead6'})}</div>
+    <div class="vcard-status st-warn">Pas assez</div>
+    <h4 style="color:#fbbf24">Lait plat / pas de mousse</h4>
+    <p>Lait chaud sans texture. Aucune mousse, impossible de faire du latte art.</p>
+    <p style="margin-top:6px;color:var(--cream);font-size:13px"><strong>Cause :</strong> Buse trop profonde, pas d'air</p>
+  </div>
+</div>`;
+
+// Thermometer
+document.getElementById('milkThermo').innerHTML=`
+<div class="thermo-wrap" style="background:var(--surface);border:1px solid var(--border);border-radius:20px;padding:32px">
+  <div style="display:flex;gap:20px;align-items:center;justify-content:center">
+    ${svgThermo(40,'#60a5fa')}
+    ${svgThermo(55,'#fbbf24')}
+    ${svgThermo(65,'#4ade80')}
+    ${svgThermo(75,'#f87171')}
+  </div>
+  <div class="thermo-zones">
+    <div class="tz" style="background:#450a0a;margin-bottom:8px">
+      <div class="tz-icon">&#128293;</div>
+      <div><strong style="color:#f87171">Au-dessus de 70°C = BRULE</strong><br><span style="font-size:13px;color:var(--text-muted)">Les proteines sont detruites. Gout de brule. Latte art impossible. JETEZ et recommencez.</span></div>
+    </div>
+    <div class="tz" style="background:#052e16;margin-bottom:8px">
+      <div class="tz-icon">&#10024;</div>
+      <div><strong style="color:#4ade80">60-65°C = PARFAIT</strong><br><span style="font-size:13px;color:var(--text-muted)">Douceur maximale, texture ideale pour le latte art. Vous pouvez toucher le pichet 2-3 secondes.</span></div>
+    </div>
+    <div class="tz" style="background:#451a03;margin-bottom:8px">
+      <div class="tz-icon">&#9888;</div>
+      <div><strong style="color:#fbbf24">50-60°C = TIEDE</strong><br><span style="font-size:13px;color:var(--text-muted)">Pas encore assez chaud. Continuez le texturage. Le lait ne sera pas assez sucre.</span></div>
+    </div>
+    <div class="tz" style="background:#0c1a3d">
+      <div class="tz-icon">&#10052;</div>
+      <div><strong style="color:#60a5fa">En dessous de 50°C = FROID</strong><br><span style="font-size:13px;color:var(--text-muted)">Trop froid pour servir. Vous etes encore dans la phase de stretching probablement.</span></div>
+    </div>
+  </div>
+</div>
+<p style="text-align:center;margin-top:12px;font-size:13px;color:var(--text-muted)">&#128161; Astuce : quand le pichet metal devient trop chaud pour le tenir plus de 2 secondes, c'est environ 65°C.</p>`;
+
+// Pitcher grip
+document.getElementById('milkGrip').innerHTML=`
+<div class="vgrid">
+  <div class="vcard">
+    <div class="vcard-vis" style="background:var(--surface2)">
+      <svg viewBox="0 0 200 200" width="200" height="200">
+        <!-- Pitcher -->
+        <path d="M60,60 L55,160 Q55,175 100,175 Q145,175 145,160 L140,60" fill="var(--surface3)" stroke="var(--border)" stroke-width="2"/>
+        <path d="M145,70 Q170,70 168,115 Q166,155 145,160" fill="none" stroke="var(--border)" stroke-width="4" stroke-linecap="round"/>
+        <path d="M60,60 Q45,55 38,48" fill="none" stroke="var(--border)" stroke-width="3" stroke-linecap="round"/>
+        <!-- Hand outline -->
+        <ellipse cx="158" cy="110" rx="22" ry="35" fill="var(--brown-dark)" opacity=".3" stroke="var(--brown)" stroke-width="1.5"/>
+        <!-- Arrow showing grip -->
+        <text x="158" y="115" text-anchor="middle" fill="var(--cream)" font-size="20">&#9995;</text>
+      </svg>
+    </div>
+    <div class="vcard-body">
+      <div class="vcard-status st-good">Bonne prise</div>
+      <h4>Main sur la anse</h4>
+      <p>Tenez la anse avec toute la main. Le pouce au-dessus, les 4 doigts autour. Cela vous permet de sentir la temperature du metal a travers la anse.</p>
+    </div>
+  </div>
+  <div class="vcard">
+    <div class="vcard-vis" style="background:var(--surface2)">
+      <svg viewBox="0 0 200 200" width="200" height="200">
+        <!-- Pitcher tilted -->
+        <g transform="rotate(-15, 100, 120)">
+          <path d="M60,60 L55,160 Q55,175 100,175 Q145,175 145,160 L140,60" fill="var(--surface3)" stroke="var(--border)" stroke-width="2"/>
+          <path d="M145,70 Q170,70 168,115 Q166,155 145,160" fill="none" stroke="var(--border)" stroke-width="4" stroke-linecap="round"/>
+          <path d="M60,60 Q45,55 38,48" fill="none" stroke="var(--border)" stroke-width="3" stroke-linecap="round"/>
+          <!-- Spout pour indicator -->
+          <path d="M38,48 L20,30" stroke="var(--brown-light)" stroke-width="2" stroke-dasharray="4 3" opacity=".8"/>
+          <circle cx="20" cy="28" r="4" fill="var(--brown-light)" opacity=".6"/>
+        </g>
+        <text x="20" y="20" fill="var(--brown-light)" font-size="11" font-weight="600">Bec verseur</text>
+      </svg>
+    </div>
+    <div class="vcard-body">
+      <div class="vcard-status st-info">Pour le versement</div>
+      <h4>Inclinez par le bec</h4>
+      <p>Pour verser, inclinez le pichet par le bec. Le poignet controle l'inclinaison et le debit. Bras stable, seul le poignet bouge.</p>
+    </div>
+  </div>
+  <div class="vcard">
+    <div class="vcard-vis" style="background:var(--surface2)">
+      <svg viewBox="0 0 200 200" width="200" height="200">
+        <!-- Pitcher body side view -->
+        <rect x="50" y="50" width="80" height="120" rx="5" fill="var(--surface3)" stroke="var(--border)" stroke-width="2"/>
+        <!-- Milk level -->
+        <rect x="52" y="80" width="76" height="88" rx="3" fill="#fef3c7" opacity=".4"/>
+        <!-- Hand touching side -->
+        <ellipse cx="130" cy="120" rx="18" ry="25" fill="var(--brown-dark)" opacity=".3" stroke="var(--brown)" stroke-width="1.5"/>
+        <text x="142" y="125" fill="var(--cream)" font-size="16">&#9995;</text>
+        <!-- Temp indicator -->
+        <text x="100" y="190" text-anchor="middle" fill="var(--text-muted)" font-size="11">Si brulant = ~65°C &#10003;</text>
+      </svg>
+    </div>
+    <div class="vcard-body">
+      <div class="vcard-status st-warn">Astuce temperature</div>
+      <h4>Touchez le metal</h4>
+      <p>Posez la main sur le cote du pichet. Si c'est <strong>chaud mais supportable 2-3s</strong> = 65°C parfait. Si ca brule instantanement = trop chaud, arretez.</p>
+    </div>
+  </div>
+</div>`;
+
+// Wand position
+document.getElementById('milkWand').innerHTML=`
+<div class="compare">
+  <div class="compare-item" style="background:#450a0a">
+    <svg viewBox="0 0 140 180" width="120" height="160">
+      <!-- Pitcher cross section -->
+      <rect x="20" y="40" width="100" height="120" rx="5" fill="var(--surface3)" stroke="var(--border)" stroke-width="1.5"/>
+      <rect x="22" y="60" width="96" height="98" rx="3" fill="#fef3c7" opacity=".3"/>
+      <!-- Wand too high -->
+      <rect x="60" y="10" width="6" height="55" rx="3" fill="#888" stroke="var(--border)" stroke-width="1"/>
+      <circle cx="63" cy="65" r="4" fill="#888"/>
+      <!-- Bubbles -->
+      <circle cx="50" cy="80" r="5" fill="none" stroke="#f87171" stroke-width="1.5" class="anim-bubble"/>
+      <circle cx="75" cy="90" r="7" fill="none" stroke="#f87171" stroke-width="1.5" class="anim-bubble2"/>
+      <circle cx="60" cy="75" r="4" fill="none" stroke="#f87171" stroke-width="1.5" class="anim-bubble3"/>
+      <text x="70" y="175" text-anchor="middle" fill="#f87171" font-size="10" font-weight="700">TROP HAUT</text>
+    </svg>
+    <div class="vcard-status st-bad">&#10060; Grosses bulles</div>
+    <p>Buse au-dessus de la surface = trop d'air, bulles enormes</p>
+  </div>
+  <div class="compare-item" style="background:#052e16">
+    <svg viewBox="0 0 140 180" width="120" height="160">
+      <rect x="20" y="40" width="100" height="120" rx="5" fill="var(--surface3)" stroke="var(--border)" stroke-width="1.5"/>
+      <rect x="22" y="60" width="96" height="98" rx="3" fill="#fef3c7" opacity=".3"/>
+      <!-- Wand just below surface -->
+      <rect x="60" y="10" width="6" height="55" rx="3" fill="#888" stroke="var(--border)" stroke-width="1"/>
+      <circle cx="63" cy="65" r="4" fill="#4ade80"/>
+      <!-- Tiny micro dots -->
+      <circle cx="50" cy="75" r="1" fill="#fff" opacity=".4" class="anim-bubble"/>
+      <circle cx="70" cy="80" r="1" fill="#fff" opacity=".3" class="anim-bubble2"/>
+      <!-- Vortex arrow -->
+      <path d="M40,100 Q70,85 90,100 Q70,115 40,100Z" fill="none" stroke="#4ade80" stroke-width="1.5" stroke-dasharray="3 2" opacity=".5"/>
+      <text x="70" y="175" text-anchor="middle" fill="#4ade80" font-size="10" font-weight="700">PARFAIT</text>
+    </svg>
+    <div class="vcard-status st-good">&#10004; Micro-mousse</div>
+    <p>Buse JUSTE sous la surface, legerement decalee = vortex + micro-bulles</p>
+  </div>
+  <div class="compare-item" style="background:#451a03">
+    <svg viewBox="0 0 140 180" width="120" height="160">
+      <rect x="20" y="40" width="100" height="120" rx="5" fill="var(--surface3)" stroke="var(--border)" stroke-width="1.5"/>
+      <rect x="22" y="60" width="96" height="98" rx="3" fill="#fef3c7" opacity=".3"/>
+      <!-- Wand too deep -->
+      <rect x="60" y="10" width="6" height="90" rx="3" fill="#888" stroke="var(--border)" stroke-width="1"/>
+      <circle cx="63" cy="100" r="4" fill="#fbbf24"/>
+      <!-- No bubbles, just heat -->
+      <path d="M50,70 Q52,63 50,55" stroke="#fbbf24" stroke-width="1.5" fill="none" opacity=".3" class="steam-line"/>
+      <text x="70" y="175" text-anchor="middle" fill="#fbbf24" font-size="10" font-weight="700">TROP PROFOND</text>
+    </svg>
+    <div class="vcard-status st-warn">&#9888; Aucune mousse</div>
+    <p>Buse trop profonde = chauffe le lait mais aucun air n'entre, pas de mousse</p>
+  </div>
+</div>`;
+
+// Phases
+const mPhases=[
+  {icon:'&#128168;',t:'1. Stretching',d:'Buse JUSTE sous la surface. Son "tch-tch-tch". Air entre dans le lait. <strong>2-4s</strong> pour latte, <strong>4-6s</strong> pour cappuccino.',vis:svgPitcher({fill:50,bubbles:true,milk:'#fef9ef'})},
+  {icon:'&#127744;',t:'2. Spinning',d:'Plongez la buse, creez un <strong>vortex</strong> (tourbillon). Le lait tourne comme une tornade. Casse les grosses bulles.',vis:svgPitcher({fill:65,shimmer:true,milk:'#fef9ef'})},
+  {icon:'&#127777;',t:'3. Stop a 65°C',d:'Arretez quand le pichet est <strong>chaud mais supportable</strong> (2-3s). Au-dela de 70°C = brule, irrecuperable.',vis:svgPitcher({fill:70,steam:true,milk:'#fef3c7'})},
+  {icon:'&#10024;',t:'4. Finition',d:'Tapotez le pichet sur le comptoir. Faites tourner le lait. Il doit ressembler a de la <strong>peinture brillante</strong>.',vis:svgPitcher({fill:70,shimmer:true,milk:'#fefbf0'})}
+];
+document.getElementById('milkPhases').innerHTML='<div class="vgrid">'+mPhases.map(p=>`<div class="vcard"><div class="vcard-vis" style="background:var(--surface2)">${p.vis}</div><div class="vcard-body"><h4>${p.icon} ${p.t}</h4><p>${p.d}</p></div></div>`).join('')+'</div>';
+
+// Milk table
+const mTypes=[
+  {t:'Lait entier &#129371;',temp:'60-65°C',m:'&#11088;&#11088;&#11088;',n:'Le standard. Riche, doux, parfait pour latte art.'},
+  {t:'Lait ecreme',temp:'60-65°C',m:'&#11088;&#11088;',n:'Mousse plus seche et aeree. Moins de douceur.'},
+  {t:'Avoine (Barista)',temp:'55-62°C',m:'&#11088;&#11088;&#11088;',n:'Meilleur lait vegetal pour latte art. Oatly Barista recommande.'},
+  {t:'Soja',temp:'55-60°C',m:'&#11088;',n:'Peut cailler avec cafe acide. Versez lait SUR le cafe.'},
+  {t:'Amande',temp:'55-60°C',m:'&#11088;',n:'Mousse instable, se separe vite. Version Barista obligatoire.'},
+  {t:'Coco',temp:'55-60°C',m:'&#9898;',n:'Mousse tres difficile. Gout prononce de coco.'}
+];
+document.getElementById('milkTable').innerHTML='<div style="overflow-x:auto"><table class="rtable"><thead><tr><th>Type</th><th>Temp. max</th><th>Mousse</th><th>Notes</th></tr></thead><tbody>'+mTypes.map(m=>`<tr><td><strong style="color:var(--text)">${m.t}</strong></td><td>${m.temp}</td><td>${m.m}</td><td>${m.n}</td></tr>`).join('')+'</tbody></table></div>';
+
+// ===== LATTE ART =====
+document.getElementById('latteHeight').innerHTML=`
+<div class="compare" style="margin-bottom:30px">
+  <div class="compare-item" style="background:var(--surface)">
+    <svg viewBox="0 0 120 160" width="100" height="140">
+      <!-- Cup -->
+      <ellipse cx="60" cy="130" rx="35" ry="10" fill="var(--surface3)"/>
+      <path d="M25,90 L30,130 Q30,140 60,140 Q90,140 90,130 L95,90" fill="#5c3a1e" stroke="var(--border)" stroke-width="1.5"/>
+      <ellipse cx="60" cy="90" rx="35" ry="10" fill="#b8864a"/>
+      <!-- Pitcher high -->
+      <g transform="rotate(-20,60,30)">
+        <rect x="45" y="10" width="30" height="40" rx="4" fill="var(--surface3)" stroke="var(--border)" stroke-width="1"/>
+      </g>
+      <!-- Stream thin -->
+      <line x1="48" y1="42" x2="60" y2="90" stroke="#fef3c7" stroke-width="2" opacity=".6" stroke-dasharray="4 3"/>
+      <!-- Height arrow -->
+      <line x1="105" y1="42" x2="105" y2="90" stroke="var(--brown-light)" stroke-width="1.5"/>
+      <text x="108" y="70" fill="var(--brown-light)" font-size="9">10cm</text>
+    </svg>
+    <div class="vcard-status st-info">Phase 1</div>
+    <h4>Verser HAUT</h4>
+    <p>A ~10cm. Le lait plonge sous la crema. Remplit la base sans motif.</p>
+  </div>
+  <div class="compare-item" style="background:var(--surface)">
+    <svg viewBox="0 0 120 160" width="100" height="140">
+      <ellipse cx="60" cy="130" rx="35" ry="10" fill="var(--surface3)"/>
+      <path d="M25,90 L30,130 Q30,140 60,140 Q90,140 90,130 L95,90" fill="#5c3a1e" stroke="var(--border)" stroke-width="1.5"/>
+      <ellipse cx="60" cy="90" rx="35" ry="10" fill="#b8864a"/>
+      <!-- White patch appearing -->
+      <ellipse cx="60" cy="90" rx="15" ry="5" fill="#fef3c7" opacity=".7"/>
+      <!-- Pitcher LOW -->
+      <g transform="rotate(-20,60,70)">
+        <rect x="45" y="55" width="30" height="40" rx="4" fill="var(--surface3)" stroke="var(--border)" stroke-width="1"/>
+      </g>
+      <!-- Stream thick -->
+      <line x1="48" y1="82" x2="55" y2="88" stroke="#fef3c7" stroke-width="4" opacity=".8"/>
+      <!-- Height arrow -->
+      <line x1="105" y1="82" x2="105" y2="90" stroke="var(--brown-light)" stroke-width="1.5"/>
+      <text x="108" y="88" fill="var(--brown-light)" font-size="9">1-2cm</text>
+    </svg>
+    <div class="vcard-status st-good">Phase 2</div>
+    <h4>Verser BAS</h4>
+    <p>A ~1-2cm. Le blanc apparait sur la surface. C'est ici que le motif se dessine.</p>
+  </div>
+  <div class="compare-item" style="background:var(--surface)">
+    <svg viewBox="0 0 120 160" width="100" height="140">
+      <ellipse cx="60" cy="130" rx="35" ry="10" fill="var(--surface3)"/>
+      <path d="M25,90 L30,130 Q30,140 60,140 Q90,140 90,130 L95,90" fill="#5c3a1e" stroke="var(--border)" stroke-width="1.5"/>
+      <ellipse cx="60" cy="90" rx="35" ry="10" fill="#b8864a"/>
+      <!-- Heart pattern -->
+      <ellipse cx="60" cy="88" rx="18" ry="8" fill="#fef3c7" opacity=".8"/>
+      <line x1="60" y1="80" x2="60" y2="98" stroke="#b8864a" stroke-width="1.5"/>
+      <!-- Pitcher lifting -->
+      <g transform="rotate(-10,60,50)">
+        <rect x="45" y="30" width="30" height="40" rx="4" fill="var(--surface3)" stroke="var(--border)" stroke-width="1"/>
+      </g>
+      <!-- Thin cut-through -->
+      <line x1="52" y1="65" x2="58" y2="82" stroke="#fef3c7" stroke-width="1.5" opacity=".6"/>
+      <!-- Up arrow -->
+      <path d="M110,75 L110,50" stroke="var(--brown-light)" stroke-width="1.5" marker-end="url(#arr)"/>
+      <defs><marker id="arr" markerWidth="6" markerHeight="6" refX="3" refY="3" orient="auto"><path d="M0,6 L3,0 L6,6" fill="var(--brown-light)"/></marker></defs>
+      <text x="113" y="65" fill="var(--brown-light)" font-size="9">Lever</text>
+    </svg>
+    <div class="vcard-status st-warn">Phase 3</div>
+    <h4>COUPER en levant</h4>
+    <p>Levez le pichet et traversez le motif d'un trait fin. Ca dessine la pointe/tige.</p>
+  </div>
+</div>`;
+
+const patterns=[
+  {name:'Coeur',level:'Debutant',icon:'&#10084;',color:'#ef4444',
+   steps:['Remplir a 50% en versant HAUT (10cm) au centre','Descendre le pichet a 1-2cm de la surface','Verser au meme point — un rond blanc apparait','Quand la tasse est presque pleine : LEVER et couper a travers'],
+   tips:'Le blanc n\'apparait pas ? Pichet trop haut. Le motif coule ? Mousse trop liquide.'},
+  {name:'Rosetta',level:'Intermediaire',icon:'&#127807;',color:'#22c55e',
+   steps:['Base : verser HAUT a 50%','Descendre, augmenter le debit a l\'arriere de la tasse','ZIGZAG rapide du POIGNET (pas du bras) en avancant','Arriver a l\'avant : LEVER et couper a travers = la tige'],
+   tips:'Le zigzag vient du POIGNET. Rapide = feuilles fines. Si asymetrique = debit pas constant.'},
+  {name:'Tulipe',level:'Intermediaire',icon:'&#127799;',color:'#f59e0b',
+   steps:['Base : verser HAUT a 40%','Descendre et verser un premier rond blanc puis STOPPER','Reculer et verser un 2eme rond (il pousse le premier)','Repeter 3-5 fois, puis couper a travers tous les cercles'],
+   tips:'La PAUSE entre chaque push est essentielle. Chaque rond de plus en plus petit.'},
+  {name:'Cygne',level:'Avance',icon:'&#129442;',color:'#a855f7',
+   steps:['Base : verser HAUT a 40%','D\'un cote : faire une ROSETTA (= l\'aile)','Tirer le lait le long du bord (= le cou)','En haut : petit mouvement circulaire (= la tete) puis couper (= le bec)'],
+   tips:'Combiner 3 techniques : rosetta + drag + coeur. Maitriser 50+ rosetta d\'abord.'}
+];
+
+document.getElementById('lattePatterns').innerHTML=patterns.map(p=>`
+<div class="lp-card" style="border-left:4px solid ${p.color}">
+  <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;margin-bottom:16px">
+    <div><span style="font-size:32px">${p.icon}</span> <span style="font-family:'Playfair Display',serif;font-size:24px">${p.name}</span></div>
+    <span class="tag" style="background:${p.color}22;color:${p.color}">${p.level}</span>
+  </div>
+  <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:12px;margin-bottom:16px">
+    ${p.steps.map((s,i)=>`<div style="background:var(--surface2);border-radius:12px;padding:16px;text-align:center">
+      <div style="font-size:28px;font-weight:700;color:${p.color};margin-bottom:4px">${i+1}</div>
+      <div style="font-size:13px;color:var(--text-muted);line-height:1.5">${s}</div>
+    </div>`).join('')}
+  </div>
+  <div style="background:var(--surface2);border-radius:12px;padding:16px">
+    <strong style="color:var(--cream);font-size:13px">&#128161; ${p.tips}</strong>
   </div>
 </div>`).join('');
 
-document.getElementById('latteVideos').innerHTML=`
-<div class="video-card">
-  <iframe src="https://www.youtube.com/embed/x5nOFirDRTo" allow="accelerometer;autoplay;clipboard-write;encrypted-media;gyroscope;picture-in-picture" allowfullscreen loading="lazy"></iframe>
-  <div class="vc-body"><div class="vc-title">Latte Art pour debutants</div><div class="vc-desc">Les bases du versement : coeur, rosetta et tulipe par Lance Hedrick.</div></div>
-</div>
-<div class="video-card">
-  <iframe src="https://www.youtube.com/embed/2mGSoEmNJLc" allow="accelerometer;autoplay;clipboard-write;encrypted-media;gyroscope;picture-in-picture" allowfullscreen loading="lazy"></iframe>
-  <div class="vc-body"><div class="vc-title">Comment texturer le lait parfaitement</div><div class="vc-desc">Tutorial complet sur le texturage du lait pour le latte art.</div></div>
-</div>
-<div class="video-card">
-  <iframe src="https://www.youtube.com/embed/gvPMTZGCEDo" allow="accelerometer;autoplay;clipboard-write;encrypted-media;gyroscope;picture-in-picture" allowfullscreen loading="lazy"></iframe>
-  <div class="vc-body"><div class="vc-title">Rosetta avancee et cygne</div><div class="vc-desc">Passer du niveau intermediaire a avance avec les patterns complexes.</div></div>
-</div>`;
+document.getElementById('latteVids').innerHTML=`
+<div class="vid-card"><iframe src="https://www.youtube.com/embed/x5nOFirDRTo" allow="accelerometer;autoplay;clipboard-write;encrypted-media;gyroscope;picture-in-picture" allowfullscreen loading="lazy"></iframe><div class="vb"><div class="vt">Latte Art debutant</div><div class="vd">Coeur, rosetta et tulipe — Lance Hedrick</div></div></div>
+<div class="vid-card"><iframe src="https://www.youtube.com/embed/2mGSoEmNJLc" allow="accelerometer;autoplay;clipboard-write;encrypted-media;gyroscope;picture-in-picture" allowfullscreen loading="lazy"></iframe><div class="vb"><div class="vt">Texturer le lait parfaitement</div><div class="vd">Tutoriel complet texturage lait</div></div></div>
+<div class="vid-card"><iframe src="https://www.youtube.com/embed/gvPMTZGCEDo" allow="accelerometer;autoplay;clipboard-write;encrypted-media;gyroscope;picture-in-picture" allowfullscreen loading="lazy"></iframe><div class="vb"><div class="vt">Rosetta avancee et cygne</div><div class="vd">Patterns avances pour baristas</div></div></div>`;
 
-// ===== DIAGNOSTIC =====
-const troubles=[
-  {q:'Mon espresso est trop acide / aigre',a:'<strong>Sous-extraction.</strong><br>&#8226; Mouture trop grosse → affinez d\'un cran<br>&#8226; Temperature trop basse → visez 93-96°C<br>&#8226; Temps trop court → cible 25-30s<br>&#8226; Dose insuffisante → augmentez de 0.5g<br>&#8226; Cafe trop frais (< 7 jours apres torrefaction) → laissez degazer'},
-  {q:'Mon espresso est trop amer / astringent',a:'<strong>Sur-extraction.</strong><br>&#8226; Mouture trop fine → rendez plus gros d\'un cran<br>&#8226; Temperature trop haute → baissez a 90-93°C<br>&#8226; Temps trop long (> 35s) → mouture plus grosse<br>&#8226; Dose trop importante → reduisez de 0.5g<br>&#8226; Cafe vieux (> 4 semaines) → changez de cafe'},
-  {q:'Mon espresso est aqueux / manque de corps',a:'<strong>Ratio trop eleve ou sous-extraction.</strong><br>&#8226; Rendement trop important → passez de 1:2.5 a 1:2<br>&#8226; Mouture trop grosse → affinez<br>&#8226; Panier trop petit pour la dose → verifiez la taille du panier<br>&#8226; Pression machine insuffisante → faites verifier (9 bars standard)'},
-  {q:'Pas de crema ou crema tres pale',a:'<strong>Cafe vieux ou sous-extraction.</strong><br>&#8226; Le cafe perd son CO2 apres 3-4 semaines → utilisez du cafe frais<br>&#8226; Mouture trop grosse → affinez<br>&#8226; L\'eau ne touche pas uniformement le cafe → ameliorez la distribution (WDT)<br>&#8226; Temperature machine trop basse → purgez le groupe avant'},
-  {q:'L\'espresso coule d\'un seul cote (channeling)',a:'<strong>Distribution inegale du cafe dans le panier.</strong><br>&#8226; Utilisez un outil WDT (aiguille) pour casser les grumeaux<br>&#8226; Tassez DROIT et uniformement, pas en angle<br>&#8226; Verifiez que le panier n\'est pas endommage<br>&#8226; Ne tapez pas le porte-filtre apres le tassage (cree des fissures)'},
-  {q:'La machine ne fait pas de pression',a:'<strong>Probleme mecanique possible.</strong><br>&#8226; Si la mouture est correcte : la pompe peut etre fatiguee<br>&#8226; Detartrez la machine (calcaire bloque le circuit)<br>&#8226; Verifiez les joints du groupe<br>&#8226; Si la machine est neuve : laissez-la chauffer 15-20 min'},
-  {q:'Mon cafe filtre est trop amer',a:'<strong>Sur-extraction en filtre.</strong><br>&#8226; Mouture trop fine → rendez plus grosse<br>&#8226; Eau trop chaude → visez 92-94°C, pas bouillante<br>&#8226; Temps de contact trop long → verifiez que le filtre n\'est pas bouche<br>&#8226; Ratio trop concentre → passez a 1:16 ou 1:17'},
-  {q:'Le latte art ne marche pas',a:'<strong>Probleme de mousse OU de versement.</strong><br>&#8226; La mousse a des bulles = retexturez plus longtemps<br>&#8226; Le blanc n\'apparait pas = pichet trop haut, rapprochez<br>&#8226; Le motif coule sous la surface = mousse trop liquide<br>&#8226; Motif asymetrique = debit pas constant, entrainez-vous avec de l\'eau<br>&#8226; Pratiquez sur 100+ tasses avant de vous juger !'}
+// ===== RECETTES =====
+const coffees=[
+  {id:1,name:"Espresso",cat:"espresso",origin:"Italie",icon:"\u2615",desc:"Shot concentre, crema doree. La base de tout.",tags:["Intense","Court"],caff:"63mg",temp:"93°C",time:"25-30s",ratio:{espresso:100},ingr:["18g cafe fin","36ml rendement"],steps:["Moulez fin, distribuez dans le panier.","Tassez ~15kg de pression.","Purgez le groupe, lancez l'extraction.","25-30s pour 36g. Crema noisette = parfait."]},
+  {id:2,name:"Ristretto",cat:"espresso",origin:"Italie",icon:"\u2615",desc:"Hyper concentre, doux, sirupeux.",tags:["Tres intense"],caff:"45mg",temp:"93°C",time:"15-20s",ratio:{espresso:100},ingr:["18g cafe fin","22-27g rendement"],steps:["Meme prep que espresso.","Arretez a 15-20s. Ratio 1:1.5.","Resultat plus doux et aromatique."]},
+  {id:3,name:"Lungo",cat:"espresso",origin:"Italie",icon:"\u2615",desc:"Espresso allonge, plus leger.",tags:["Allonge"],caff:"80mg",temp:"93°C",time:"45-60s",ratio:{espresso:100},ingr:["18g cafe","54g rendement"],steps:["Laissez couler plus longtemps.","Ratio 1:3. Attention a l'amertume."]},
+  {id:4,name:"Americano",cat:"espresso",origin:"USA",icon:"\u2615",desc:"Espresso + eau chaude.",tags:["Doux","Long"],caff:"63mg",temp:"85°C",time:"3min",ratio:{espresso:20,eau:80},ingr:["1 double espresso","150-200ml eau chaude"],steps:["Tirez un double espresso.","Versez l'eau chaude dessus.","Ratio 1:4 a 1:6."]},
+  {id:5,name:"Cappuccino",cat:"lait",origin:"Italie",icon:"\u2615",desc:"1/3 espresso, 1/3 lait, 1/3 mousse.",tags:["Cremeux","Mousseux"],caff:"63mg",temp:"65°C",time:"5min",ratio:{espresso:33,lait:33,mousse:34},ingr:["1 double espresso","120ml lait entier"],steps:["Double espresso en tasse 180ml.","Texturez : stretching 4-6s + spinning.","Mousse dense (1-1.5cm).","Versez en 3 phases."]},
+  {id:6,name:"Latte",cat:"lait",origin:"Italie/USA",icon:"\u2615",desc:"Plus de lait, fine mousse, ideal latte art.",tags:["Doux","Grand"],caff:"63mg",temp:"65°C",time:"5min",ratio:{espresso:15,lait:75,mousse:10},ingr:["1 double espresso","200-250ml lait"],steps:["Double espresso en tasse 300ml.","Micro-mousse fine (0.5cm max).","Versez au centre pour latte art."]},
+  {id:7,name:"Flat White",cat:"lait",origin:"Australie",icon:"\u2615",desc:"Latte court, intense, micro-mousse ultra veloutee.",tags:["Veloute"],caff:"126mg",temp:"65°C",time:"5min",ratio:{espresso:25,lait:70,mousse:5},ingr:["1 double ristretto","150ml lait"],steps:["Double ristretto.","Micro-mousse tres fine.","Moins d'1cm de mousse en surface."]},
+  {id:8,name:"Macchiato",cat:"lait",origin:"Italie",icon:"\u2615",desc:"Espresso tache d'un nuage de mousse.",tags:["Intense","Court"],caff:"63mg",temp:"65°C",time:"2min",ratio:{espresso:75,mousse:25},ingr:["1 espresso","1 cuillere mousse"],steps:["Espresso en petite tasse.","Deposez une cuillere de mousse."]},
+  {id:9,name:"Cortado",cat:"lait",origin:"Espagne",icon:"\u2615",desc:"Espresso coupe 50/50 avec lait chaud.",tags:["Equilibre"],caff:"63mg",temp:"65°C",time:"3min",ratio:{espresso:50,lait:50},ingr:["1 double espresso","60ml lait"],steps:["Double espresso en verre Gibraltar.","Lait chaud, peu de mousse.","Ratio 1:1."]},
+  {id:10,name:"Mocha",cat:"lait",origin:"USA",icon:"\u2615",desc:"Cafe + chocolat + lait + creme fouettee.",tags:["Chocolat","Gourmand"],caff:"63mg",temp:"65°C",time:"6min",ratio:{espresso:15,chocolat:10,lait:55,creme:20},ingr:["1 double espresso","Sirop/cacao","150ml lait","Creme fouettee"],steps:["Cacao au fond, espresso dessus, melangez.","Lait texture par-dessus.","Creme fouettee + cacao."]},
+  {id:11,name:"V60",cat:"filtre",origin:"Japon",icon:"\u2615",desc:"Cafe clair et aromatique. Methode douce.",tags:["Delicat"],caff:"95mg",temp:"93°C",time:"3-4min",ratio:{cafe:100},ingr:["15g cafe moyen-fin","250ml eau 93°C","V60"],steps:["Rincez le filtre.","Bloom : 30ml, 45 secondes.","Versez en spirale par etapes.","Total 3-4 minutes."]},
+  {id:12,name:"Chemex",cat:"filtre",origin:"USA",icon:"\u2615",desc:"Ultra propre et limpide. Filtre epais.",tags:["Propre"],caff:"95mg",temp:"93°C",time:"4-5min",ratio:{cafe:100},ingr:["30g cafe moyen","500ml eau","Chemex"],steps:["Filtre 3 couches vers le bec.","Bloom 60ml, 45s.","Cercles concentriques."]},
+  {id:13,name:"French Press",cat:"filtre",origin:"France",icon:"\u2615",desc:"Riche en corps, toutes les huiles preservees.",tags:["Corpose"],caff:"100mg",temp:"93°C",time:"4min",ratio:{cafe:100},ingr:["30g cafe gros","500ml eau"],steps:["Cafe gros + toute l'eau.","Remuer a 1 min.","Presser a 4 min.","Servir immediatement."]},
+  {id:14,name:"AeroPress",cat:"filtre",origin:"USA",icon:"\u2615",desc:"Portable, polyvalente, cafe doux.",tags:["Portable"],caff:"80mg",temp:"85°C",time:"2min",ratio:{cafe:100},ingr:["15g cafe fin-moyen","200ml eau 85°C"],steps:["Methode inversee.","Cafe + eau + remuer 10s.","Attendre 1 min, retourner, presser."]},
+  {id:15,name:"Cold Brew",cat:"froid",origin:"Japon/USA",icon:"\ud83e\uddca",desc:"Infusion froide 12-24h. Doux, peu acide.",tags:["Froid","Doux"],caff:"200mg",temp:"Froid",time:"12-24h",ratio:{cafe:100},ingr:["100g cafe tres gros","1L eau froide"],steps:["Melanger, couvrir, frigo.","12-24h. Filtrer.","Concentre : diluer 1:1."]},
+  {id:16,name:"Iced Latte",cat:"froid",origin:"USA",icon:"\ud83e\uddca",desc:"Espresso sur lait froid et glace.",tags:["Glace"],caff:"63mg",temp:"Froid",time:"3min",ratio:{espresso:15,lait:65,glace:20},ingr:["1 double espresso","200ml lait froid","Glacons"],steps:["Glacons + lait froid.","Espresso verse lentement dessus."]},
+  {id:17,name:"Affogato",cat:"froid",origin:"Italie",icon:"\ud83c\udf68",desc:"Espresso brulant sur glace vanille.",tags:["Dessert"],caff:"63mg",temp:"Chaud+froid",time:"2min",ratio:{espresso:40,glace:60},ingr:["1 espresso","1-2 boules glace vanille"],steps:["Glace dans un verre.","Espresso brulant dessus.","Deguster immediatement."]},
+  {id:18,name:"Espresso Tonic",cat:"froid",origin:"Scandinavie",icon:"\ud83e\uddca",desc:"Espresso + tonic petillant.",tags:["Petillant"],caff:"63mg",temp:"Froid",time:"3min",ratio:{espresso:25,tonic:60,glace:15},ingr:["1 double espresso","150ml tonic","Glacons"],steps:["Glacons + tonic.","Espresso refroidi 1min verse doucement.","Tranche de citron."]},
+  {id:19,name:"Cafe Turc",cat:"monde",origin:"Turquie",icon:"\u2615",desc:"Ultra-fin dans un cezve. Epais, epice.",tags:["Traditionnel"],caff:"50mg",temp:"70°C",time:"5min",ratio:{cafe:100},ingr:["7g cafe ultra-fin","60ml eau","Cezve"],steps:["Eau froide + cafe dans le cezve.","Feu doux. Monte 2 fois.","Ne buvez pas le fond."]},
+  {id:20,name:"Cafe Vietnamien",cat:"monde",origin:"Vietnam",icon:"\u2615",desc:"Filtre phin + lait concentre sucre.",tags:["Sucre"],caff:"100mg",temp:"96°C",time:"5-7min",ratio:{cafe:30,lait:70},ingr:["15g robusta","Lait concentre","Phin"],steps:["Lait concentre au fond.","Phin + cafe + eau chaude.","5-7 min d'egouttement.","Melanger. Glacons pour version froide."]},
+  {id:21,name:"Irish Coffee",cat:"monde",origin:"Irlande",icon:"\u2615",desc:"Cafe + whiskey + creme flottante.",tags:["Alcoolise"],caff:"95mg",temp:"80°C",time:"5min",ratio:{cafe:50,whiskey:15,creme:35},ingr:["150ml cafe filtre","40ml whiskey","Creme epaisse"],steps:["Sucre + whiskey + cafe chaud.","Creme flottante sur le dos d'une cuillere.","Buvez a travers la creme."]}
 ];
 
-document.getElementById('troubleshoot').innerHTML=troubles.map(t=>
-  `<div class="diag-card"><div class="diag-header" onclick="this.parentElement.classList.toggle('open')"><span>${t.q}</span><span class="arrow">&#9660;</span></div><div class="diag-body"><div class="diag-body-inner">${t.a}</div></div></div>`
-).join('');
+const catN={espresso:"Espresso",lait:"A base de lait",filtre:"Filtre",froid:"Froid",monde:"Du monde"};
+const ratioC={espresso:'#78350f',lait:'#fbbf24',mousse:'#f5f5dc',eau:'#60a5fa',chocolat:'#451a03',creme:'#fef3c7',glace:'#bae6fd',cafe:'#92400e',tonic:'#06b6d4',whiskey:'#b45309'};
+let aFilt='all';
 
-// ===== OUTILS =====
-let timerInterval=null,timerMs=0,timerRunning=false;
+function renderR(){
+  const cats=['all',...Object.keys(catN)];
+  document.getElementById('filterBar').innerHTML=cats.map(c=>`<button class="btn-o" style="${aFilt===c?'background:var(--brown);border-color:var(--brown);color:#000':''}" onclick="aFilt='${c}';renderR()">${c==='all'?'Tous':catN[c]}</button>`).join('');
+  const f=aFilt==='all'?coffees:coffees.filter(c=>c.cat===aFilt);
+  document.getElementById('recipesGrid').innerHTML=f.map(c=>`
+    <div class="rcard" onclick="openR(${c.id})">
+      <div style="display:flex;align-items:center;gap:12px;margin-bottom:10px">
+        <div style="font-size:32px">${c.icon}</div>
+        <div><div style="font-size:11px;color:var(--brown-light);font-weight:600;text-transform:uppercase;letter-spacing:1px">${catN[c.cat]}</div><h4 style="font-family:'Playfair Display',serif;font-size:18px">${c.name}</h4></div>
+      </div>
+      <p style="font-size:13px;color:var(--text-muted)">${c.desc}</p>
+      <div style="margin-top:10px;font-size:12px;color:var(--text-muted)">&#9201; ${c.time} &middot; &#127777; ${c.temp} &middot; &#9889; ${c.caff}</div>
+    </div>`).join('');
+}
 
-document.getElementById('toolsContent').innerHTML=`
-<div class="tool-box">
-  <h3>&#9201; Timer d'extraction</h3>
-  <div class="timer-display" id="timerDisplay">00:00.0</div>
-  <div class="timer-btns">
-    <button class="btn" onclick="toggleTimer()" id="timerBtn">Demarrer</button>
-    <button class="btn-outline" onclick="resetTimer()">Reset</button>
-  </div>
-  <div style="display:flex;gap:8px;justify-content:center;margin-top:12px">
-    <button class="btn-outline" onclick="setPreset(25)">25s Espresso</button>
-    <button class="btn-outline" onclick="setPreset(240)">4min French Press</button>
-    <button class="btn-outline" onclick="setPreset(210)">3:30 V60</button>
-  </div>
-</div>
+function openR(id){
+  const c=coffees.find(x=>x.id===id);if(!c)return;
+  let rb='';if(c.ratio)rb='<div class="ratio-bar">'+Object.entries(c.ratio).map(([k,v])=>`<div style="width:${v}%;background:${ratioC[k]||'#888'}">${k} ${v}%</div>`).join('')+'</div>';
+  document.getElementById('md').innerHTML=`
+    <button class="md-close" onclick="closeM()">&times;</button>
+    <div style="font-size:48px;margin-bottom:12px">${c.icon}</div>
+    <h2 style="font-family:'Playfair Display',serif;font-size:28px">${c.name}</h2>
+    <div style="color:var(--brown-light);font-size:14px;margin-bottom:16px">${c.origin} &middot; ${catN[c.cat]}</div>
+    <p style="color:var(--text-muted);font-size:14px">${c.desc}</p>
+    <div class="igrid"><div class="ib"><div class="l">Cafeine</div><div class="v">${c.caff}</div></div><div class="ib"><div class="l">Temp</div><div class="v">${c.temp}</div></div><div class="ib"><div class="l">Temps</div><div class="v">${c.time}</div></div></div>
+    <h3 style="font-family:'Playfair Display',serif;color:var(--cream);margin:20px 0 8px;font-size:18px">Ratio</h3>${rb}
+    <h3 style="font-family:'Playfair Display',serif;color:var(--cream);margin:20px 0 8px;font-size:18px">Ingredients</h3>
+    <ul class="ingr">${c.ingr.map(i=>`<li>${i}</li>`).join('')}</ul>
+    <h3 style="font-family:'Playfair Display',serif;color:var(--cream);margin:20px 0 8px;font-size:18px">Preparation</h3>
+    <div class="steps">${c.steps.map(s=>`<div class="step">${s}</div>`).join('')}</div>`;
+  document.getElementById('mo').classList.add('active');document.body.style.overflow='hidden';
+}
+function closeM(){document.getElementById('mo').classList.remove('active');document.body.style.overflow=''}
+document.getElementById('mo').addEventListener('click',e=>{if(e.target===e.currentTarget)closeM()});
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeM()});
+renderR();
 
-<div class="tool-box">
-  <h3>&#128200; Calculateur de ratio</h3>
-  <div class="input-row">
-    <div><div class="input-label">Dose (g)</div><input type="number" class="input-field" id="calcDose" value="18" oninput="calcRatio()"></div>
-    <div><div class="input-label">Ratio</div>
-      <select class="input-field" id="calcRatio" style="width:150px" onchange="calcRatio()">
-        <option value="1.5">1:1.5 Ristretto</option>
-        <option value="2" selected>1:2 Espresso</option>
-        <option value="2.5">1:2.5 Lungo court</option>
-        <option value="3">1:3 Lungo</option>
-        <option value="15">1:15 Filtre fort</option>
-        <option value="16">1:16 Filtre standard</option>
-        <option value="17">1:17 Filtre leger</option>
-      </select>
+// ===== DIAGNOSTIC VISUEL =====
+document.getElementById('diagVisual').innerHTML=`
+<div class="vgrid" style="margin-bottom:30px">
+  <div class="vcard">
+    <div class="vcard-vis" style="background:#450a0a">
+      ${svgCup({color:'#d4a574',crema:'#e8c99b'})}
+    </div>
+    <div class="vcard-body">
+      <div class="vcard-status st-bad">Acide / Aigre</div>
+      <h4>Sous-extraction</h4>
+      <p>&#8226; Mouture plus fine<br>&#8226; Temperature plus haute<br>&#8226; Temps plus long<br>&#8226; Dose plus importante</p>
     </div>
   </div>
-  <div class="result-box">
-    <div class="big" id="calcResult">36g</div>
-    <div class="label">Rendement cible</div>
+  <div class="vcard">
+    <div class="vcard-vis" style="background:#052e16">
+      ${svgCup({color:'#5c3a1e',crema:'#b8864a'})}
+    </div>
+    <div class="vcard-body">
+      <div class="vcard-status st-good">Equilibre</div>
+      <h4>Extraction parfaite</h4>
+      <p>&#8226; Crema noisette, tiger stripes<br>&#8226; Gout sucre, rond, complexe<br>&#8226; Pas d'amertume ni d'acidite<br>&#8226; Ne changez rien !</p>
+    </div>
   </div>
-  <div id="calcWater" style="text-align:center;margin-top:8px;font-size:14px;color:var(--text-muted)"></div>
-</div>
-
-<div class="tool-box">
-  <h3>&#9989; Checklist ouverture</h3>
-  <ul class="checklist" id="checkOpen"></ul>
-  <h3 style="margin-top:24px">&#128308; Checklist fermeture</h3>
-  <ul class="checklist" id="checkClose"></ul>
-</div>
-
-<div class="tool-box">
-  <h3>&#128221; Carnet de notes (reglages du jour)</h3>
-  <textarea class="notes-area" id="notesArea" placeholder="Ex: Cafe Ethiopie Yirgacheffe - Moulin cran 12 - 18g dose - 36g en 27s - Gout: floral, agrumes, equilibre...">${localStorage.getItem('barista_notes')||''}</textarea>
-  <div style="margin-top:12px;display:flex;gap:8px">
-    <button class="btn" onclick="localStorage.setItem('barista_notes',document.getElementById('notesArea').value);this.textContent='Sauvegarde !';setTimeout(()=>this.textContent='Sauvegarder',1500)">Sauvegarder</button>
-    <button class="btn-outline" onclick="if(confirm('Effacer toutes les notes ?')){document.getElementById('notesArea').value='';localStorage.removeItem('barista_notes')}">Effacer</button>
+  <div class="vcard">
+    <div class="vcard-vis" style="background:#451a03">
+      ${svgCup({color:'#2c1810',crema:'#4a2a18'})}
+    </div>
+    <div class="vcard-body">
+      <div class="vcard-status st-warn">Amer / Astringent</div>
+      <h4>Sur-extraction</h4>
+      <p>&#8226; Mouture plus grosse<br>&#8226; Temperature plus basse<br>&#8226; Temps plus court<br>&#8226; Dose moins importante</p>
+    </div>
   </div>
 </div>`;
 
-function toggleTimer(){
-  if(timerRunning){
-    clearInterval(timerInterval);timerRunning=false;
-    document.getElementById('timerBtn').textContent='Reprendre';
-  }else{
-    timerRunning=true;
-    document.getElementById('timerBtn').textContent='Pause';
-    const start=Date.now()-timerMs;
-    timerInterval=setInterval(()=>{
-      timerMs=Date.now()-start;
-      document.getElementById('timerDisplay').textContent=formatTimer(timerMs);
-    },100);
-  }
-}
+const troubles=[
+  {q:'Pas de crema / crema pale',a:'<strong>Cafe trop vieux</strong> (>3-4 semaines) ou <strong>mouture trop grosse</strong>. Utilisez du cafe frais, affinez la mouture.'},
+  {q:'Channeling (eau passe d\'un cote)',a:'<strong>Distribution inegale.</strong> Utilisez un outil WDT (aiguille). Tassez DROIT. Ne tapez pas le porte-filtre apres tassage.'},
+  {q:'Mon cafe filtre est amer',a:'<strong>Mouture trop fine</strong> ou eau trop chaude. Rendez plus gros, visez 92-94°C.'},
+  {q:'Le latte art ne marche pas',a:'<strong>Mousse pas assez bonne</strong> = retexturez. <strong>Blanc n\'apparait pas</strong> = pichet trop haut. <strong>Motif coule</strong> = mousse trop liquide.'},
+  {q:'Le lait vegetal caille',a:'Le cafe est <strong>trop acide ou trop chaud</strong>. Utilisez des versions "Barista". Versez lait SUR cafe, pas l\'inverse.'},
+  {q:'La machine ne fait pas de pression',a:'<strong>Detartrez la machine.</strong> Verifiez les joints. Si neuve : laissez chauffer 15-20 min.'}
+];
+document.getElementById('troubleshoot').innerHTML=troubles.map(t=>`<div class="diag"><div class="diag-h" onclick="this.parentElement.classList.toggle('open')"><span>${t.q}</span><span class="arr">&#9660;</span></div><div class="diag-b"><div class="diag-bi">${t.a}</div></div></div>`).join('');
 
-function resetTimer(){
-  clearInterval(timerInterval);timerMs=0;timerRunning=false;
-  document.getElementById('timerDisplay').textContent='00:00.0';
-  document.getElementById('timerBtn').textContent='Demarrer';
-}
+// ===== OUTILS =====
+let tI=null,tMs=0,tR=false;
+document.getElementById('toolsContent').innerHTML=`
+<div class="tbox"><h3>&#9201; Timer d'extraction</h3><div class="timer-d" id="tD">00:00.0</div><div style="display:flex;gap:8px;justify-content:center;flex-wrap:wrap"><button class="btn" onclick="tT()" id="tB">Demarrer</button><button class="btn-o" onclick="tReset()">Reset</button></div><div style="display:flex;gap:8px;justify-content:center;margin-top:12px;flex-wrap:wrap"><button class="btn-o" onclick="tP(25)">25s Espresso</button><button class="btn-o" onclick="tP(240)">4min French Press</button><button class="btn-o" onclick="tP(210)">3:30 V60</button></div></div>
+<div class="tbox"><h3>&#128200; Calculateur de ratio</h3><div class="irow"><div><div class="ilabel">Dose (g)</div><input type="number" class="ifield" id="cD" value="18" oninput="cR()"></div><div><div class="ilabel">Ratio</div><select class="ifield" id="cRat" style="width:150px" onchange="cR()"><option value="1.5">1:1.5 Ristretto</option><option value="2" selected>1:2 Espresso</option><option value="2.5">1:2.5 Lungo</option><option value="15">1:15 Filtre fort</option><option value="16">1:16 Filtre</option></select></div></div><div class="rbox"><div class="big" id="cRes">36g</div><div class="lbl" id="cLbl">Rendement cible</div></div></div>
+<div class="tbox"><h3>&#9989; Checklist ouverture</h3><ul class="cklist" id="ckO"></ul><h3 style="margin-top:24px">&#128308; Checklist fermeture</h3><ul class="cklist" id="ckC"></ul></div>
+<div class="tbox"><h3>&#128221; Carnet de notes</h3><textarea class="notes-a" id="nA" placeholder="Ex: Ethiopie Yirgacheffe — Moulin cran 12 — 18g → 36g en 27s — floral, agrumes...">${localStorage.getItem('bn')||''}</textarea><div style="margin-top:12px;display:flex;gap:8px"><button class="btn" onclick="localStorage.setItem('bn',document.getElementById('nA').value);this.textContent='&#10003; Sauvegarde !';setTimeout(()=>this.textContent='Sauvegarder',1500)">Sauvegarder</button><button class="btn-o" onclick="if(confirm('Effacer ?')){document.getElementById('nA').value='';localStorage.removeItem('bn')}">Effacer</button></div></div>`;
 
-function setPreset(sec){
-  resetTimer();timerMs=0;
-  document.getElementById('timerDisplay').textContent=formatTimer(0)+' / '+formatTimer(sec*1000);
-}
+function tT(){if(tR){clearInterval(tI);tR=false;document.getElementById('tB').textContent='Reprendre'}else{tR=true;document.getElementById('tB').textContent='Pause';const s=Date.now()-tMs;tI=setInterval(()=>{tMs=Date.now()-s;document.getElementById('tD').textContent=fT(tMs)},100)}}
+function tReset(){clearInterval(tI);tMs=0;tR=false;document.getElementById('tD').textContent='00:00.0';document.getElementById('tB').textContent='Demarrer'}
+function tP(s){tReset();document.getElementById('tD').textContent='00:00.0 / '+fT(s*1000)}
+function fT(ms){const s=Math.floor(ms/1000),m=Math.floor(s/60),ss=s%60,d=Math.floor((ms%1000)/100);return String(m).padStart(2,'0')+':'+String(ss).padStart(2,'0')+'.'+d}
+function cR(){const d=parseFloat(document.getElementById('cD').value)||18,r=parseFloat(document.getElementById('cRat').value)||2;document.getElementById('cRes').textContent=Math.round(d*r)+'g';document.getElementById('cLbl').textContent=r>=10?`${Math.round(d*r)}ml d'eau pour ${d}g`:`Visez ${Math.round(d*r)}g en tasse`}
+cR();
 
-function formatTimer(ms){
-  const s=Math.floor(ms/1000),m=Math.floor(s/60),ss=s%60,d=Math.floor((ms%1000)/100);
-  return String(m).padStart(2,'0')+':'+String(ss).padStart(2,'0')+'.'+d;
-}
-
-function calcRatio(){
-  const dose=parseFloat(document.getElementById('calcDose').value)||18;
-  const ratio=parseFloat(document.getElementById('calcRatio').value)||2;
-  const result=Math.round(dose*ratio);
-  document.getElementById('calcResult').textContent=result+'g';
-  if(ratio>=10){
-    document.getElementById('calcWater').textContent=`Soit environ ${result}ml d'eau pour ${dose}g de cafe`;
-  }else{
-    document.getElementById('calcWater').textContent=`Posez la tasse sur la balance et visez ${result}g de liquide en sortie`;
-  }
-}
-calcRatio();
-
-const checkOpening=['Allumer la machine (15-20 min de chauffe)','Purger le groupe (faire couler l\'eau)','Verifier le niveau d\'eau du reservoir','Nettoyer le porte-filtre (backflush si machine le permet)','Moudre et jeter les 2-3 premieres doses (purge du moulin)','Tirer un espresso test et gouter','Ajuster la mouture si necessaire','Preparer les laits (sortir du frigo)','Remplir les conteneurs a sucre/cacao/sirops','Verifier les stocks de gobelets/couvercles'];
-
-const checkClosing=['Backflush la machine avec detergent','Nettoyer les groupes et porte-filtres','Vider et rincer le bac a marc','Purger et nettoyer la buse vapeur','Nettoyer le moulin (brosse)','Vider les laits (ne pas reutiliser le lait chauffe)','Nettoyer les pichets','Essuyer toutes les surfaces','Eteindre la machine','Verifier les stocks pour demain'];
-
-function renderChecklist(items,containerId,storageKey){
-  const saved=JSON.parse(localStorage.getItem(storageKey)||'[]');
-  document.getElementById(containerId).innerHTML=items.map((item,i)=>{
-    const done=saved.includes(i);
-    return `<li class="${done?'done':''}" onclick="toggleCheck(${i},'${storageKey}','${containerId}',${JSON.stringify(items).replace(/'/g,"\\'")})"><div class="check-box">${done?'&#10003;':''}</div>${item}</li>`;
-  }).join('');
-}
-
-function toggleCheck(index,key,containerId,items){
-  let saved=JSON.parse(localStorage.getItem(key)||'[]');
-  if(saved.includes(index))saved=saved.filter(i=>i!==index);
-  else saved.push(index);
-  localStorage.setItem(key,JSON.stringify(saved));
-  renderChecklist(items,containerId,key);
-}
-
-renderChecklist(checkOpening,'checkOpen','check_open');
-renderChecklist(checkClosing,'checkClose','check_close');
+const ckO=['Allumer la machine (15-20 min chauffe)','Purger le groupe','Nettoyer porte-filtre','Moudre + jeter 2-3 premieres doses','Tirer un espresso test','Ajuster mouture si besoin','Sortir les laits','Remplir sirops/sucre/cacao','Verifier stocks gobelets'];
+const ckC=['Backflush avec detergent','Nettoyer groupes + porte-filtres','Vider bac a marc','Purger + nettoyer buse vapeur','Brosser le moulin','Vider les laits','Nettoyer pichets','Essuyer surfaces','Eteindre machine'];
+function rCk(items,cid,key){const sv=JSON.parse(localStorage.getItem(key)||'[]');document.getElementById(cid).innerHTML=items.map((it,i)=>`<li class="${sv.includes(i)?'done':''}" onclick="tCk(${i},'${key}','${cid}')"><div class="ckbox">${sv.includes(i)?'&#10003;':''}</div>${it}</li>`).join('')}
+function tCk(i,k,cid){let sv=JSON.parse(localStorage.getItem(k)||'[]');if(sv.includes(i))sv=sv.filter(x=>x!==i);else sv.push(i);localStorage.setItem(k,JSON.stringify(sv));const items=cid==='ckO'?ckO:ckC;rCk(items,cid,k)}
+rCk(ckO,'ckO','co');rCk(ckC,'ckC','cc');
 
 // ===== GLOSSAIRE =====
-const glossary=[
-  {term:'Backflush',def:'Nettoyage du groupe avec un disque aveugle et detergent. A faire quotidiennement.'},
-  {term:'Bloom',def:'Pre-infusion en filtre. L\'eau fait degazer le CO2 du cafe frais, creant un gonflement.'},
-  {term:'Channeling',def:'Passage preferentiel de l\'eau a travers le cafe, causant une extraction inegale.'},
-  {term:'Crema',def:'Mousse doree sur l\'espresso. Composee de CO2, huiles et proteines emulsifiees.'},
-  {term:'Dialing-in',def:'Processus d\'ajustement des parametres (mouture, dose, temps) pour obtenir le shot ideal.'},
-  {term:'Distribution (WDT)',def:'Weiss Distribution Technique. Utiliser une aiguille pour casser les grumeaux dans le panier.'},
-  {term:'Dose',def:'Poids de cafe sec en grammes utilise pour preparer le shot.'},
-  {term:'Extraction',def:'Le processus de dissolution des composes solubles du cafe par l\'eau. Idealement 18-22%.'},
-  {term:'Groupe',def:'La piece de la machine ou se fixe le porte-filtre. Doit etre propre et chaud.'},
-  {term:'Micro-mousse',def:'Lait texture avec des bulles microscopiques. Texture veloutee pour le latte art.'},
-  {term:'Phin',def:'Filtre vietnamien individuel en metal, pose sur le verre.'},
-  {term:'Porte-filtre',def:'Le manche qui contient le panier de cafe et se verrouille dans le groupe.'},
-  {term:'Pull (tirer un shot)',def:'Extraire un espresso. Vient de l\'epoque des machines a levier.'},
-  {term:'Purge',def:'Faire couler l\'eau du groupe avant l\'extraction pour stabiliser la temperature.'},
-  {term:'Ratio',def:'Rapport dose/rendement. 1:2 = 18g de cafe pour 36g de liquide.'},
-  {term:'Rendement',def:'Le poids du liquide en sortie (dans la tasse), mesure sur la balance.'},
-  {term:'Ristretto',def:'Shot court (ratio 1:1 a 1:1.5). Plus concentre et doux qu\'un espresso standard.'},
-  {term:'Single origin',def:'Cafe provenant d\'une seule ferme, region ou pays. Permet d\'apprecier le terroir.'},
-  {term:'Specialty coffee',def:'Cafe note 80+ sur 100 par la SCA. Traçabilite complete de la ferme a la tasse.'},
-  {term:'Stretching',def:'Phase du texturage lait ou l\'on incorpore de l\'air (le "tch-tch-tch").'},
-  {term:'Spinning',def:'Phase du texturage ou l\'on cree le vortex pour integrer les bulles et chauffer le lait.'},
-  {term:'Tamp (tassage)',def:'Presser le cafe dans le panier avec ~15kg de pression, de maniere uniforme.'},
-  {term:'TDS',def:'Total Dissolved Solids. Mesure la quantite de matieres dissoutes dans le cafe.'},
-  {term:'Tiger striping',def:'Rayures foncees dans la crema de l\'espresso. Signe d\'une bonne extraction.'},
-  {term:'Torrefaction',def:'Cuisson du cafe vert. Claire = acide/fruite. Moyenne = equilibre. Foncee = amere/chocolatee.'}
+const gl=[
+  {t:'Backflush',d:'Nettoyage du groupe avec disque aveugle + detergent. Quotidien.'},
+  {t:'Bloom',d:'Pre-infusion en filtre. L\'eau fait degazer le CO2 du cafe frais.'},
+  {t:'Channeling',d:'Passage preferentiel de l\'eau causant une extraction inegale.'},
+  {t:'Crema',d:'Mousse doree sur l\'espresso. CO2 + huiles + proteines.'},
+  {t:'Dialing-in',d:'Ajuster mouture/dose/temps pour le shot parfait.'},
+  {t:'WDT',d:'Weiss Distribution Technique. Aiguille pour casser les grumeaux.'},
+  {t:'Dose',d:'Poids de cafe sec en grammes.'},
+  {t:'Extraction',d:'Dissolution des solubles du cafe par l\'eau. Ideal : 18-22%.'},
+  {t:'Micro-mousse',d:'Lait texture avec bulles microscopiques. Texture veloutee.'},
+  {t:'Porte-filtre',d:'Le manche avec panier qui se verrouille dans le groupe.'},
+  {t:'Purge',d:'Couler l\'eau du groupe avant extraction pour stabiliser la temperature.'},
+  {t:'Ratio',d:'Rapport dose/rendement. 1:2 = 18g cafe → 36g liquide.'},
+  {t:'Ristretto',d:'Shot court ratio 1:1.5. Plus concentre et doux.'},
+  {t:'Stretching',d:'Phase du texturage : incorporation d\'air (le "tch-tch").'},
+  {t:'Spinning',d:'Phase du texturage : vortex pour integrer les bulles.'},
+  {t:'Tamp',d:'Tassage du cafe dans le panier. ~15kg, uniforme.'},
+  {t:'TDS',d:'Total Dissolved Solids. Concentration du cafe.'},
+  {t:'Tiger striping',d:'Rayures dans la crema. Signe d\'une bonne extraction.'},
+  {t:'Torrefaction',d:'Claire=fruité. Moyenne=equilibre. Foncée=chocolat/amer.'},
+  {t:'Single Origin',d:'Cafe d\'une seule ferme/region. Terroir unique.'},
+  {t:'Specialty',d:'Cafe note 80+/100 par la SCA.'}
 ];
-
-document.getElementById('glossaryContent').innerHTML=glossary.map(g=>
-  `<dl class="glossary-item"><dt>${g.term}</dt><dd>${g.def}</dd></dl>`
-).join('');
+document.getElementById('glossContent').innerHTML=gl.map(g=>`<dl class="gl-item"><dt>${g.t}</dt><dd>${g.d}</dd></dl>`).join('');
 
 // Smooth scroll
-document.querySelectorAll('a[href^="#"]').forEach(a=>{
-  a.addEventListener('click',e=>{
-    e.preventDefault();
-    const el=document.querySelector(a.getAttribute('href'));
-    if(el)el.scrollIntoView({behavior:'smooth'});
-  });
-});
+document.querySelectorAll('a[href^="#"]').forEach(a=>{a.addEventListener('click',e=>{e.preventDefault();const el=document.querySelector(a.getAttribute('href'));if(el)el.scrollIntoView({behavior:'smooth'})})});
 </script>
 </body>
 </html>
